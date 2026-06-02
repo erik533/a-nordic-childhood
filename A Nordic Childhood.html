@@ -1,0 +1,679 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>A Nordic Childhood — Erik Astrand</title>
+  <meta name="description" content="A Nordic Childhood — a printable PDF journal for children ages 5 to 8. Nature, feelings, courage, and quiet wonder. By Erik Astrand." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* ---- Design tokens ---- */
+    :root {
+      --color-parchment:       #E8DDC9;
+      --color-birch:           #F7F2E8;
+      --color-mist:            #EFE8D9;
+      --color-paper-shadow:    #D9CDB6;
+      --color-pine:            #6F765E;
+      --color-pine-deep:       #545B47;
+      --color-moss:            #8A7A4F;
+      --color-horizon:         #A9B0AC;
+      --color-horizon-deep:    #8A938E;
+      --color-book-brown:      #4A321C;
+      --color-book-brown-soft: #6B4F35;
+      --color-gold:            #B89145;
+      --color-gold-deep:       #97742F;
+      --fg-1:       var(--color-book-brown);
+      --fg-2:       var(--color-book-brown-soft);
+      --fg-3:       #8A6F52;
+      --fg-muted:   #A89378;
+      --fg-accent:  var(--color-pine);
+      --fg-gold:    var(--color-gold-deep);
+      --fg-on-dark: var(--color-birch);
+      --bg-page:         var(--color-birch);
+      --bg-surface:      var(--color-parchment);
+      --bg-surface-soft: var(--color-mist);
+      --bg-elevated:     #FBF7EE;
+      --bg-dark:         #2E2014;
+      --bg-pine:         var(--color-pine);
+      --rule-soft:   rgba(74, 50, 28, 0.10);
+      --rule-medium: rgba(74, 50, 28, 0.20);
+      --rule-strong: rgba(74, 50, 28, 0.45);
+      --rule-gold:   rgba(184, 145, 69, 0.55);
+      --font-serif: "Cormorant", "Cormorant Garamond", "Iowan Old Style", "Apple Garamond", Garamond, Georgia, serif;
+      --font-sans:  "Jost", "Avenir Next", "Avenir", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --fs-display:  88px;
+      --fs-h1:       64px;
+      --fs-h2:       44px;
+      --fs-h3:       32px;
+      --fs-h4:       24px;
+      --fs-eyebrow:  13px;
+      --fs-body-lg:  19px;
+      --fs-body:     17px;
+      --fs-body-sm:  15px;
+      --fs-caption:  13px;
+      --fs-micro:    11px;
+      --lh-display: 1.02;
+      --lh-heading: 1.12;
+      --lh-body:    1.55;
+      --lh-loose:   1.7;
+      --ls-eyebrow: 0.22em;
+      --ls-button:  0.08em;
+      --ls-tight:   -0.01em;
+      --space-1:  4px;   --space-2:  8px;   --space-3:  12px;
+      --space-4:  16px;  --space-5:  24px;  --space-6:  32px;
+      --space-7:  48px;  --space-8:  64px;  --space-9:  96px;  --space-10: 128px;
+      --section-y:       120px;
+      --section-y-tight:  80px;
+      --r-xs: 2px;  --r-sm: 4px;  --r-md: 8px;
+      --r-lg: 14px; --r-xl: 22px; --r-pill: 999px;
+      --shadow-paper: 0 1px 2px rgba(74,50,28,0.06), 0 6px 18px rgba(74,50,28,0.08);
+      --shadow-book:  0 4px 12px rgba(74,50,28,0.10), 0 24px 48px rgba(74,50,28,0.14);
+      --shadow-press: 0 1px 2px rgba(74,50,28,0.10) inset;
+      --shadow-rule:  inset 0 -1px 0 var(--rule-gold);
+      --ease-paper: cubic-bezier(0.32, 0.08, 0.24, 1);
+      --dur-fast:  160ms;
+      --dur-base:  280ms;
+      --dur-slow:  520ms;
+    }
+
+    /* ---- Resets ---- */
+    html, body { margin: 0; padding: 0; background: var(--bg-page); color: var(--fg-1); -webkit-font-smoothing: antialiased; }
+    body { font-family: var(--font-sans); }
+    *, *::before, *::after { box-sizing: border-box; }
+    img { display: block; max-width: 100%; }
+    ::selection { background: rgba(184,145,69,0.35); color: var(--fg-1); }
+
+    /* ---- Semantic type ---- */
+    h1, .h1 { font-family: var(--font-serif); font-weight: 500; font-size: var(--fs-h1); line-height: var(--lh-heading); letter-spacing: var(--ls-tight); color: var(--fg-1); text-wrap: balance; }
+    h2, .h2 { font-family: var(--font-serif); font-weight: 500; font-size: var(--fs-h2); line-height: var(--lh-heading); color: var(--fg-1); text-wrap: balance; }
+    h3, .h3 { font-family: var(--font-serif); font-weight: 500; font-size: var(--fs-h3); line-height: var(--lh-heading); color: var(--fg-1); }
+    p, .body { font-family: var(--font-sans); font-weight: 400; font-size: var(--fs-body); line-height: var(--lh-body); color: var(--fg-1); }
+
+    /* ---- Scroll-in animation ---- */
+    @media (prefers-reduced-motion: no-preference) {
+      section {
+        animation: nc-rise 0.8s cubic-bezier(0.32,0.08,0.24,1) both;
+        animation-timeline: view();
+        animation-range: entry 0% cover 12%;
+      }
+      @keyframes nc-rise { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+    }
+
+    /* ---- Modal / lightbox animations ---- */
+    @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+    @keyframes ncFade { from { opacity:0; } to { opacity:1; } }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin></script>
+
+  <script type="text/babel">
+
+    // ─── Shared primitives ──────────────────────────────────────────────────────
+
+    const Knot = ({ size = 24, stroke = 1.2, color = "currentColor" }) => (
+      <svg width={size} height={size} viewBox="0 0 40 40" fill="none"
+           stroke={color} strokeWidth={stroke} strokeLinecap="round" strokeLinejoin="round"
+           style={{ display: "block" }}>
+        <path d="M20 6 L26 14 L34 20 L26 26 L20 34 L14 26 L6 20 L14 14 Z" />
+        <path d="M20 12 L24 16 L28 20 L24 24 L20 28 L16 24 L12 20 L16 16 Z" />
+        <circle cx="20" cy="20" r="1.2" fill={color} stroke="none" />
+      </svg>
+    );
+
+    const Arrow = ({ size = 18 }) => (
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"
+           style={{ display: "block" }}>
+        <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
+      </svg>
+    );
+
+    const Eyebrow = ({ children, style }) => (
+      <div style={{
+        fontFamily: "var(--font-sans)", fontWeight: 500, fontSize: 13,
+        letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--fg-gold)",
+        ...style,
+      }}>{children}</div>
+    );
+
+    const Button = ({ variant = "primary", children, onClick, style }) => {
+      const [hover, setHover] = React.useState(false);
+      const [press, setPress] = React.useState(false);
+      const base = {
+        fontFamily: "var(--font-sans)", fontWeight: 500, fontSize: 14,
+        letterSpacing: "0.06em", padding: "16px 28px", borderRadius: "var(--r-md)",
+        border: "1px solid transparent", cursor: "pointer",
+        display: "inline-flex", alignItems: "center", gap: 10,
+        transition: "background var(--dur-fast) var(--ease-paper), color var(--dur-fast) var(--ease-paper), border-color var(--dur-fast) var(--ease-paper), transform var(--dur-fast) var(--ease-paper)",
+        textDecoration: "none", whiteSpace: "nowrap",
+      };
+      const variants = {
+        primary:   { background: "var(--color-book-brown)", color: "var(--fg-on-dark)" },
+        secondary: { background: "transparent", color: "var(--fg-1)", borderColor: "var(--rule-gold)" },
+        ghost:     { background: "transparent", color: "var(--fg-1)", padding: "8px 0", borderRadius: 0, borderBottom: "1px solid var(--rule-gold)" },
+      };
+      const hovered = {
+        primary:   { background: "var(--color-pine-deep)" },
+        secondary: { borderColor: "var(--color-gold-deep)", color: "var(--color-gold-deep)" },
+        ghost:     { color: "var(--color-gold-deep)", borderColor: "var(--color-gold-deep)" },
+      };
+      return (
+        <button onClick={onClick}
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => { setHover(false); setPress(false); }}
+          onMouseDown={() => setPress(true)}
+          onMouseUp={() => setPress(false)}
+          style={{ ...base, ...variants[variant], ...(hover ? hovered[variant] : {}), ...(press ? { transform: "translateY(1px)", boxShadow: "var(--shadow-press)" } : {}), ...style }}>
+          {children}
+        </button>
+      );
+    };
+
+    const PDFBadge = ({ style }) => (
+      <div style={{
+        display: "inline-flex", alignItems: "center", gap: 10,
+        padding: "9px 18px 9px 14px",
+        background: "var(--bg-elevated)", border: "1px solid var(--color-gold)",
+        borderRadius: "var(--r-pill)", boxShadow: "var(--shadow-paper)", ...style,
+      }}>
+        <span style={{ color: "var(--color-gold)", lineHeight: 0 }}><Knot size={18} /></span>
+        <span style={{ fontFamily: "var(--font-sans)", fontSize: 12, fontWeight: 500, letterSpacing: "0.22em", color: "var(--fg-gold)" }}>PRINTABLE PDF EDITION</span>
+      </div>
+    );
+
+    // Smooth-scroll helper: accepts a section id string, or passes through native scroll args.
+    const _nativeScrollTo = window.scrollTo.bind(window);
+    const scrollTo = (...args) => {
+      const id = args[0];
+      if (typeof id !== "string") return _nativeScrollTo(...args);
+      const el = document.getElementById(id);
+      if (!el) return;
+      _nativeScrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 64, behavior: "smooth" });
+    };
+
+    // ─── Header ─────────────────────────────────────────────────────────────────
+
+    const Header = ({ onBuy }) => {
+      const [scrolled, setScrolled] = React.useState(false);
+      React.useEffect(() => {
+        const fn = () => setScrolled(window.scrollY > 80);
+        fn();
+        window.addEventListener("scroll", fn, { passive: true });
+        return () => window.removeEventListener("scroll", fn);
+      }, []);
+
+      return (
+        <header style={{
+          position: "fixed", inset: "0 0 auto 0", zIndex: 50,
+          padding: "18px 40px", display: "flex", alignItems: "center", gap: 36,
+          background: scrolled ? "rgba(247,242,232,0.82)" : "transparent",
+          backdropFilter: scrolled ? "blur(10px)" : "none",
+          WebkitBackdropFilter: scrolled ? "blur(10px)" : "none",
+          borderBottom: scrolled ? "1px solid var(--rule-gold)" : "1px solid transparent",
+          transition: "background var(--dur-base) var(--ease-paper), border-color var(--dur-base) var(--ease-paper)",
+        }}>
+          <a href="#top"
+             onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+             style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontWeight: 500, fontSize: 24, color: "var(--fg-1)", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 10 }}>
+            <span style={{ color: "var(--color-gold)", lineHeight: 0 }}><Knot size={20} /></span>
+            ErikAstrand<span style={{ color: "var(--fg-gold)" }}>.com</span>
+          </a>
+          <nav style={{ display: "flex", gap: 32, marginLeft: 24 }}>
+            {[{ label: "The Book", id: "what" }, { label: "Inside", id: "inside" }, { label: "For Parents", id: "grownup" }].map((it) => (
+              <a key={it.id} href={`#${it.id}`}
+                 onClick={(e) => { e.preventDefault(); scrollTo(it.id); }}
+                 style={{ fontFamily: "var(--font-sans)", fontSize: 14, color: "var(--fg-1)", textDecoration: "none", padding: "4px 0", borderBottom: "1px solid transparent", transition: "border-color var(--dur-fast) var(--ease-paper), color var(--dur-fast) var(--ease-paper)" }}
+                 onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--rule-gold)"; e.currentTarget.style.color = "var(--color-gold-deep)"; }}
+                 onMouseLeave={(e) => { e.currentTarget.style.borderColor = "transparent"; e.currentTarget.style.color = "var(--fg-1)"; }}>
+                {it.label}
+              </a>
+            ))}
+          </nav>
+          <div style={{ marginLeft: "auto" }}>
+            <Button onClick={onBuy} style={{ padding: "11px 22px", fontSize: 13 }}>Buy</Button>
+          </div>
+        </header>
+      );
+    };
+
+    // ─── Hero ────────────────────────────────────────────────────────────────────
+
+    const Hero = ({ onBuy }) => (
+      <section id="top" style={{
+        position: "relative", minHeight: "min(880px, 100vh)",
+        padding: "140px 40px 96px", display: "flex", alignItems: "center",
+        overflow: "hidden", background: "var(--color-birch)",
+      }}>
+        {/* Forest illustration */}
+        <div aria-hidden="true" style={{ position: "absolute", inset: 0, zIndex: 0, backgroundImage: `url("assets/illustrations/hero-forest-2.jpg")`, backgroundRepeat: "no-repeat", backgroundPosition: "right center", backgroundSize: "cover" }} />
+        {/* Parchment wash left */}
+        <div aria-hidden="true" style={{ position: "absolute", inset: 0, zIndex: 0, background: "linear-gradient(90deg, rgba(247,242,232,0.92) 0%, rgba(247,242,232,0.82) 28%, rgba(247,242,232,0.35) 50%, rgba(247,242,232,0) 66%)" }} />
+        {/* Paper grain */}
+        <div aria-hidden="true" style={{ position: "absolute", inset: 0, zIndex: 1, pointerEvents: "none", opacity: 0.45, mixBlendMode: "multiply", backgroundImage: "radial-gradient(rgba(74,50,28,0.045) 1px, transparent 1px), radial-gradient(rgba(74,50,28,0.035) 1px, transparent 1px)", backgroundSize: "3px 3px, 7px 7px", backgroundPosition: "0 0, 1px 2px" }} />
+
+        <div style={{ position: "relative", zIndex: 2, maxWidth: 1240, width: "100%", margin: "0 auto", display: "grid", gridTemplateColumns: "minmax(360px, 520px) 1fr", gap: 40 }}>
+          <div>
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 12, marginBottom: 28 }}>
+              <span style={{ color: "var(--color-gold)", lineHeight: 0 }}><Knot size={16} /></span>
+              <Eyebrow style={{ margin: 0 }}>A Nordic Childhood</Eyebrow>
+            </div>
+            <h1 style={{ fontFamily: "var(--font-serif)", fontWeight: 500, fontSize: "clamp(44px, 6vw, 88px)", lineHeight: 1.02, letterSpacing: "-0.01em", color: "var(--fg-1)", margin: 0, textWrap: "balance" }}>
+              A Nordic Childhood,<br />
+              <em style={{ fontWeight: 400 }}>brought home one page at a time.</em>
+            </h1>
+
+            <div style={{ display: "flex", alignItems: "center", gap: 14, margin: "28px 0" }}>
+              <div style={{ height: 1, background: "var(--rule-gold)", width: 80 }} />
+              <span style={{ color: "var(--color-gold)", lineHeight: 0 }}><Knot size={14} /></span>
+              <div style={{ height: 1, background: "var(--rule-gold)", width: 80 }} />
+            </div>
+
+            <p style={{ fontFamily: "var(--font-sans)", fontSize: 18, lineHeight: 1.65, color: "var(--fg-2)", maxWidth: 460, margin: 0 }}>
+              A gentle book for children ages 5 to 8 — about nature, feelings, courage, and quiet wonder.
+            </p>
+
+            <div style={{ display: "flex", gap: 16, marginTop: 36, flexWrap: "wrap" }}>
+              <Button onClick={onBuy}>Buy the Book</Button>
+              <Button variant="secondary" onClick={() => scrollTo("what")}>Explore the Book</Button>
+            </div>
+
+            <div style={{ fontFamily: "var(--font-sans)", fontSize: 12, color: "var(--fg-3)", marginTop: 32, letterSpacing: "0.16em", textTransform: "uppercase" }}>
+              A printable PDF journal by Erik Astrand
+            </div>
+          </div>
+        </div>
+
+        {/* Scroll cue */}
+        <div style={{ position: "absolute", bottom: 28, left: "50%", transform: "translateX(-50%)", zIndex: 2, color: "var(--fg-3)", display: "flex", flexDirection: "column", alignItems: "center", gap: 6, fontFamily: "var(--font-sans)", fontSize: 10, letterSpacing: "0.22em", textTransform: "uppercase" }}>
+          <span>Scroll</span>
+          <svg width="14" height="18" viewBox="0 0 24 30" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"><path d="M12 4v22" /><path d="m6 20 6 6 6-6" /></svg>
+        </div>
+      </section>
+    );
+
+    // ─── WhatItIs ────────────────────────────────────────────────────────────────
+
+    const WhatItIs = () => (
+      <section id="what" style={{ position: "relative", width: "100%", aspectRatio: "1672 / 941", overflow: "hidden", background: "var(--color-parchment)" }}>
+        <img src="assets/illustrations/what-it-is-flatlay-2.jpg"
+             alt="A Nordic Childhood book with open spreads, a pencil, autumn leaves and pine sprigs on a warm tabletop"
+             style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }} />
+        <div aria-hidden="true" style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(90deg, rgba(232,221,201,0) 0%, rgba(232,221,201,0) 48%, rgba(232,221,201,0.6) 56%, rgba(232,221,201,0.98) 62%, #E8DDC9 66%, #E8DDC9 100%)" }} />
+        <div aria-hidden="true" style={{ position: "absolute", inset: 0, opacity: 0.3, mixBlendMode: "multiply", pointerEvents: "none", zIndex: 2, backgroundImage: "radial-gradient(rgba(74,50,28,0.045) 1px, transparent 1px)", backgroundSize: "5px 5px" }} />
+
+        <div style={{ position: "absolute", zIndex: 3, top: 0, bottom: 0, right: "max(40px, 4vw)", width: "min(34%, 460px)", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+          <Eyebrow>What the book is</Eyebrow>
+          <h2 style={{ fontFamily: "var(--font-serif)", fontWeight: 500, fontSize: "clamp(28px, 3.4vw, 52px)", lineHeight: 1.07, color: "var(--fg-1)", margin: "16px 0 0", textWrap: "balance" }}>
+            Not a workbook to finish. A book to live in.
+          </h2>
+          <p style={{ fontFamily: "var(--font-sans)", fontSize: "clamp(14px, 1.25vw, 18px)", lineHeight: 1.65, color: "var(--fg-2)", marginTop: "clamp(16px, 2vw, 28px)" }}>
+            <em style={{ fontFamily: "var(--font-serif)", fontStyle: "italic" }}>A Nordic Childhood</em> gives children space to draw, write,
+            notice, feel, wonder, and return. It is not a test. It is more like a conversation.
+          </p>
+          <p style={{ fontFamily: "var(--font-sans)", fontSize: "clamp(14px, 1.25vw, 18px)", lineHeight: 1.65, color: "var(--fg-2)", marginTop: 16 }}>
+            Made for quiet moments, curious minds, and pages that become their own.
+          </p>
+          <div style={{ marginTop: "clamp(20px, 2.4vw, 32px)", display: "flex", alignItems: "center", gap: 24, flexWrap: "wrap" }}>
+            <Button variant="ghost" onClick={() => scrollTo("inside")}>See what's inside <Arrow /></Button>
+            <PDFBadge />
+          </div>
+          <div style={{ fontFamily: "var(--font-sans)", fontSize: 14, color: "var(--fg-3)", marginTop: "clamp(16px, 2vw, 28px)" }}>
+            By Erik Astrand
+          </div>
+        </div>
+      </section>
+    );
+
+    // ─── NordicIdeas ─────────────────────────────────────────────────────────────
+
+    const IDEAS = [
+      { name: "Friluftsliv",    line: "Outdoor life, in every season.",     cx: 22.25, row: "top" },
+      { name: "Allemansrätten", line: "The freedom to roam with care.",     cx: 50.75, row: "top" },
+      { name: "Lagom",          line: "The peaceful feeling of enough.",    cx: 78.75, row: "top" },
+      { name: "Hygge",          line: "Warmth, comfort, and togetherness.", cx: 34.75, row: "bottom" },
+      { name: "Sisu",           line: "The quiet courage inside you.",      cx: 63.25, row: "bottom" },
+    ];
+
+    const IdeaCaption = ({ name, line, cx, row }) => (
+      <div style={{ position: "absolute", left: `${cx}%`, top: row === "top" ? "54%" : "84%", height: row === "top" ? "7.4%" : "6.9%", transform: "translateX(-50%)", width: "25%", textAlign: "center", pointerEvents: "none", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+        <div style={{ fontFamily: "var(--font-serif)", fontWeight: 500, fontSize: "clamp(16px, 1.45vw, 23px)", lineHeight: 1.1, color: "var(--fg-1)" }}>{name}</div>
+        <div style={{ fontFamily: "var(--font-sans)", fontSize: "clamp(11px, 0.88vw, 14.5px)", lineHeight: 1.35, color: "var(--fg-2)", marginTop: "0.3em" }}>{line}</div>
+      </div>
+    );
+
+    const NordicIdeas = () => (
+      <section id="ideas" style={{ background: "var(--bg-page)", paddingTop: 0, paddingBottom: "var(--section-y-tight)" }}>
+        <div style={{ position: "relative", width: "100%", aspectRatio: "1672 / 941" }}>
+          <img src="assets/illustrations/nordic-ideas-board-clean.jpg"
+               alt="Five framed watercolor scenes on warm parchment — a child hiking in pine forest, a meadow path, lake stones, a cozy window, and a child by a snowy spruce"
+               style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "contain", display: "block" }} />
+
+          <div style={{ position: "absolute", left: "50%", top: "4.5%", transform: "translateX(-50%)", width: "min(680px, 64%)", textAlign: "center" }}>
+            <Eyebrow>The Nordic Ideas</Eyebrow>
+            <div style={{ color: "var(--color-gold)", lineHeight: 0, margin: "0.7em 0 0" }}><Knot size={16} /></div>
+            <h2 style={{ fontFamily: "var(--font-serif)", fontWeight: 500, fontSize: "clamp(24px, 2.7vw, 42px)", lineHeight: 1.08, color: "var(--fg-1)", margin: "0.5em auto 0", textWrap: "balance" }}>
+              Five Nordic ideas, gently woven through every page.
+            </h2>
+            <p style={{ fontFamily: "var(--font-sans)", fontSize: "clamp(12px, 1.02vw, 16px)", lineHeight: 1.55, color: "var(--fg-2)", margin: "clamp(8px, 1.1vw, 16px) auto 0", maxWidth: 520 }}>
+              From outdoor life to quiet courage,{" "}
+              <em style={{ fontFamily: "var(--font-serif)" }}>A Nordic Childhood</em>{" "}
+              introduces children to simple ideas they can notice, feel, and practice in their own way.
+            </p>
+          </div>
+
+          {IDEAS.map((it) => <IdeaCaption key={it.name} {...it} />)}
+
+          <div style={{ position: "absolute", left: "50%", top: "92.5%", transform: "translateX(-50%)" }}>
+            <Button variant="ghost" onClick={() => scrollTo("inside")}>Explore the Nordic ideas <Arrow /></Button>
+          </div>
+        </div>
+      </section>
+    );
+
+    // ─── InsidePages ─────────────────────────────────────────────────────────────
+
+    const SPREAD_IMG = "assets/illustrations/inside-pages-spread-opt.jpg";
+
+    const SpreadLightbox = ({ onClose }) => {
+      React.useEffect(() => {
+        const fn = (e) => { if (e.key === "Escape") onClose(); };
+        document.addEventListener("keydown", fn);
+        return () => document.removeEventListener("keydown", fn);
+      }, [onClose]);
+      return (
+        <div onClick={onClose} style={{ position: "fixed", inset: 0, zIndex: 100, background: "rgba(46,32,20,0.82)", backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)", display: "flex", alignItems: "center", justifyContent: "center", padding: 40, animation: "ncFade 280ms cubic-bezier(0.32,0.08,0.24,1)" }}>
+          <button onClick={(e) => { e.stopPropagation(); onClose(); }} aria-label="Close"
+                  style={{ position: "absolute", top: 28, right: 28, background: "transparent", border: "1px solid rgba(247,242,232,0.4)", color: "var(--color-birch)", borderRadius: "var(--r-pill)", width: 44, height: 44, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+          <div onClick={(e) => e.stopPropagation()} style={{ background: "var(--bg-elevated)", borderRadius: "var(--r-sm)", boxShadow: "var(--shadow-book)", padding: 16, width: "min(1280px, 94vw)", maxHeight: "92vh", overflow: "hidden" }}>
+            <img src={SPREAD_IMG} alt="Sample pages from A Nordic Childhood"
+                 style={{ width: "100%", height: "auto", display: "block", borderRadius: "var(--r-xs)", maxHeight: "calc(92vh - 32px)", objectFit: "contain" }} />
+          </div>
+        </div>
+      );
+    };
+
+    const InsidePages = () => {
+      const [open, setOpen] = React.useState(false);
+      const [hover, setHover] = React.useState(false);
+      return (
+        <section id="inside" style={{ paddingTop: "var(--section-y-tight)", paddingBottom: 0, background: "var(--bg-page)" }}>
+          <button onClick={() => setOpen(true)}
+                  onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}
+                  aria-label="Enlarge sample pages"
+                  style={{ all: "unset", position: "relative", display: "block", width: "100%", cursor: "zoom-in", aspectRatio: "2200 / 1244" }}>
+            <img src={SPREAD_IMG} alt="Sample pages from A Nordic Childhood"
+                 style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform var(--dur-base) var(--ease-paper)", transform: hover ? "scale(1.012)" : "scale(1)" }} />
+
+            <div style={{ position: "absolute", left: "50%", top: "2%", transform: "translateX(-50%)", width: "min(760px, 60%)", textAlign: "center", pointerEvents: "none" }}>
+              <Eyebrow style={{ fontSize: "clamp(8px, 0.78vw, 13px)" }}>Inside the Pages</Eyebrow>
+              <h2 style={{ fontFamily: "var(--font-serif)", fontWeight: 500, fontSize: "clamp(13px, 2.7vw, 44px)", lineHeight: 1.08, color: "var(--fg-1)", margin: "0.3em auto 0", textWrap: "balance" }}>
+                A gentle journey through nature, feelings, balance, and courage.
+              </h2>
+              <p style={{ fontFamily: "var(--font-sans)", fontSize: "clamp(8px, 1.05vw, 17px)", lineHeight: 1.45, color: "var(--fg-2)", margin: "clamp(4px, 0.75vw, 14px) auto 0", maxWidth: 560 }}>
+                A peek inside <em style={{ fontFamily: "var(--font-serif)" }}>A Nordic Childhood</em>.
+                These are sample pages from different parts of the printable journal.
+              </p>
+              <p style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontSize: "clamp(7px, 0.9vw, 14px)", color: "var(--fg-3)", margin: "clamp(2px, 0.4vw, 8px) 0 0" }}>Tap to enlarge.</p>
+            </div>
+          </button>
+          {open && <SpreadLightbox onClose={() => setOpen(false)} />}
+        </section>
+      );
+    };
+
+    // ─── ForTheChild ─────────────────────────────────────────────────────────────
+
+    const ChildBenefit = ({ children }) => (
+      <div style={{ display: "flex", alignItems: "center", gap: 14, fontFamily: "var(--font-serif)", fontStyle: "italic", fontSize: "clamp(16px, 1.55vw, 22px)", lineHeight: 1.3, color: "var(--fg-1)" }}>
+        <span style={{ color: "var(--color-gold)", lineHeight: 0 }}><Knot size={16} /></span>
+        {children}
+      </div>
+    );
+
+    const ForTheChild = () => (
+      <section id="child" style={{ position: "relative", width: "100%", aspectRatio: "2200 / 1418", minHeight: 520, backgroundImage: `url("assets/illustrations/child-at-table-leadin.jpg")`, backgroundRepeat: "no-repeat", backgroundPosition: "center left", backgroundSize: "cover", display: "flex", alignItems: "center", justifyContent: "flex-end", overflow: "hidden" }}>
+        <div aria-hidden="true" style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none", background: "linear-gradient(90deg, transparent 44%, rgba(247,242,232,0.86) 56%, rgba(247,242,232,0.9) 100%)" }} />
+        <div style={{ position: "relative", zIndex: 1, width: "min(34%, 430px)", marginRight: "clamp(24px, 5vw, 100px)", marginLeft: "auto" }}>
+          <Eyebrow>For the Child</Eyebrow>
+          <h2 style={{ fontFamily: "var(--font-serif)", fontWeight: 500, fontSize: "clamp(28px, 3.4vw, 50px)", lineHeight: 1.08, color: "var(--fg-1)", margin: "clamp(12px, 1.4vw, 20px) 0 0", textWrap: "balance" }}>
+            A quiet place to notice, draw, write, and wonder.
+          </h2>
+          <p style={{ fontFamily: "var(--font-sans)", fontSize: "clamp(14px, 1.25vw, 18px)", lineHeight: 1.7, color: "var(--fg-2)", marginTop: "clamp(14px, 1.8vw, 28px)" }}>
+            Some pages invite children outside. Some invite them inward. They can draw what they find,
+            name what they feel, write a few words, or simply sit with a question for a while.
+          </p>
+          <p style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontSize: "clamp(16px, 1.55vw, 22px)", lineHeight: 1.45, color: "var(--fg-gold)", marginTop: "clamp(16px, 2vw, 30px)" }}>
+            There is no right way to use it.<br/>The page becomes theirs.
+          </p>
+          <div style={{ marginTop: "clamp(18px, 2.4vw, 34px)", display: "flex", flexDirection: "column", gap: "clamp(10px, 1vw, 16px)" }}>
+            <ChildBenefit>Draw what you notice</ChildBenefit>
+            <ChildBenefit>Name what you feel</ChildBenefit>
+            <ChildBenefit>Make the page your own</ChildBenefit>
+          </div>
+          <div style={{ marginTop: "clamp(18px, 2.4vw, 34px)" }}>
+            <Button variant="ghost" onClick={() => scrollTo("grownup")}>Begin with one page <Arrow /></Button>
+          </div>
+        </div>
+      </section>
+    );
+
+    // ─── ForTheGrownUp ───────────────────────────────────────────────────────────
+
+    const ForTheGrownUp = () => (
+      <section id="grownup" style={{ position: "relative", width: "100%", aspectRatio: "2688 / 1520", minHeight: 520, backgroundImage: `url("assets/illustrations/grownup-cabin-2.jpg")`, backgroundRepeat: "no-repeat", backgroundPosition: "center right", backgroundSize: "cover", display: "flex", alignItems: "center", overflow: "hidden" }}>
+        <div style={{ width: "min(40%, 560px)", marginLeft: "clamp(24px, 6.5vw, 130px)", marginRight: "auto" }}>
+          <div style={{ fontFamily: "var(--font-sans)", fontWeight: 500, fontSize: "clamp(11px, 0.9vw, 13px)", letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--fg-gold)" }}>For the Grown-up</div>
+          <h2 style={{ fontFamily: "var(--font-serif)", fontWeight: 500, fontSize: "clamp(28px, 3.6vw, 52px)", lineHeight: 1.06, color: "var(--fg-1)", margin: "clamp(12px, 1.4vw, 20px) 0 0", textWrap: "balance" }}>
+            You don't have to manage it.{" "}
+            <em style={{ color: "var(--fg-gold)", fontStyle: "italic", fontWeight: 400 }}>Just leave room for it.</em>
+          </h2>
+          <p style={{ fontFamily: "var(--font-sans)", fontSize: "clamp(14px, 1.25vw, 18px)", lineHeight: 1.7, color: "var(--fg-2)", marginTop: "clamp(16px, 2vw, 30px)" }}>
+            <em style={{ fontFamily: "var(--font-serif)" }}>A Nordic Childhood</em> is gentle, open, and self-led.
+            Print one page or a few. Sit nearby, take it outside, or let your child explore it alone.
+            It does not need to be completed in order, and it does not need to be done perfectly.
+          </p>
+          <div style={{ marginTop: "clamp(18px, 2.4vw, 34px)", paddingLeft: "clamp(14px, 1.4vw, 22px)", borderLeft: "2px solid var(--color-gold)" }}>
+            <p style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontSize: "clamp(17px, 1.7vw, 24px)", lineHeight: 1.4, color: "var(--fg-1)", margin: 0 }}>
+              A little time, space, and quiet is enough.
+            </p>
+          </div>
+          <div style={{ marginTop: "clamp(18px, 2.4vw, 34px)" }}>
+            <a href="#how" onClick={(e) => { e.preventDefault(); scrollTo("how"); }}
+               style={{ fontFamily: "var(--font-sans)", fontSize: "clamp(12px, 1vw, 14px)", fontWeight: 500, letterSpacing: "0.06em", color: "var(--fg-1)", textDecoration: "none", paddingBottom: 6, borderBottom: "1px solid var(--rule-gold)", display: "inline-flex", gap: 10, alignItems: "center" }}>
+              See how it works <Arrow />
+            </a>
+          </div>
+        </div>
+      </section>
+    );
+
+    // ─── HowItWorks ──────────────────────────────────────────────────────────────
+
+    const HIW_STEPS = [
+      { cx: 19.3, top: 58.2, w: 23, title: "Download the PDF",        body: "Receive the book instantly after purchase." },
+      { cx: 48.6, top: 58.2, w: 24, title: "Print what you need",     body: "Print the whole book, one section, or just a few pages at a time. Favorite pages can be printed again whenever your child wants to return to them." },
+      { cx: 77.6, top: 57.0, w: 23, title: "Let your child\nmake it theirs", body: "Draw in it, write in it, take it outside, and return whenever they want." },
+    ];
+
+    const HiwStep = ({ cx, top, w, title, body }) => (
+      <div style={{ position: "absolute", left: `${cx}%`, top: `${top}%`, transform: "translateX(-50%)", width: `${w}%`, textAlign: "center" }}>
+        <div style={{ fontFamily: "var(--font-serif)", fontWeight: 500, fontSize: "clamp(11px, 2.25vw, 32px)", lineHeight: 1.12, color: "var(--fg-1)", whiteSpace: "pre-line", textWrap: "balance" }}>{title}</div>
+        <div style={{ fontFamily: "var(--font-sans)", fontSize: "clamp(8px, 1.18vw, 16.5px)", lineHeight: 1.5, color: "var(--fg-2)", margin: "clamp(6px, 0.85vw, 14px) auto 0", maxWidth: "92%" }}>{body}</div>
+      </div>
+    );
+
+    const HowItWorks = () => (
+      <section id="how" style={{ background: "var(--bg-page)", paddingTop: 0, paddingBottom: 0 }}>
+        <div style={{ position: "relative", width: "100%", aspectRatio: "1402 / 1122" }}>
+          <img src="assets/illustrations/how-it-works-board-clean.jpg"
+               alt="Three steps — download the PDF, print what you need, and let your child make it theirs"
+               style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+          <Eyebrow style={{ position: "absolute", left: "50%", top: "4.7%", transform: "translateX(-50%)", fontSize: "clamp(8px, 0.92vw, 13px)", letterSpacing: "0.24em", whiteSpace: "nowrap" }}>How it works</Eyebrow>
+          <h2 style={{ position: "absolute", left: "50%", top: "10.4%", transform: "translateX(-50%)", width: "84%", textAlign: "center", fontFamily: "var(--font-serif)", fontWeight: 500, fontSize: "clamp(13px, 5.9vw, 84px)", lineHeight: 1.04, color: "var(--fg-1)", margin: 0, textWrap: "balance", whiteSpace: "nowrap" }}>
+            Download. Print. Begin slowly.
+          </h2>
+          <p style={{ position: "absolute", left: "50%", top: "20.6%", transform: "translateX(-50%)", width: "min(740px, 52%)", textAlign: "center", fontFamily: "var(--font-sans)", fontSize: "clamp(8px, 1.55vw, 22px)", lineHeight: 1.5, color: "var(--fg-2)", margin: 0 }}>
+            <em style={{ fontFamily: "var(--font-serif)" }}>A Nordic Childhood</em> is delivered as a printable PDF,
+            so you can start right away and use the pages in whatever rhythm fits your family.
+          </p>
+          {HIW_STEPS.map((s) => <HiwStep key={s.title} {...s} />)}
+          <div style={{ position: "absolute", left: "47%", top: "81.5%", transform: "translateX(-50%)", width: "46%", textAlign: "center", fontFamily: "var(--font-serif)", fontWeight: 500, fontSize: "clamp(8px, 1.85vw, 26px)", lineHeight: 1.1, color: "var(--color-gold)", whiteSpace: "nowrap" }}>
+            No schedule. No pressure. No perfect way to begin.
+          </div>
+          <div style={{ position: "absolute", left: "50%", top: "94.0%", transform: "translateX(-50%)", width: "70%", textAlign: "center", fontFamily: "var(--font-serif)", fontStyle: "italic", fontSize: "clamp(7px, 1.42vw, 20px)", lineHeight: 1.2, color: "var(--fg-3)", whiteSpace: "nowrap" }}>
+            Print what you need. Use it your way. Come back anytime.
+          </div>
+        </div>
+      </section>
+    );
+
+    // ─── FinalCTA ────────────────────────────────────────────────────────────────
+
+    const FinalCTA = ({ onBuy }) => (
+      <section id="buy" style={{ position: "relative", width: "100%", aspectRatio: "1672 / 941", minHeight: 560, backgroundImage: `url("assets/illustrations/finalcta-lakeside-3.jpg")`, backgroundRepeat: "no-repeat", backgroundPosition: "center right", backgroundSize: "cover", display: "flex", alignItems: "center", overflow: "hidden" }}>
+        <div aria-hidden="true" style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none", background: "linear-gradient(90deg, var(--color-birch) 0%, rgba(247,242,232,0.88) 26%, rgba(247,242,232,0) 46%)" }} />
+        <div style={{ position: "relative", zIndex: 1, width: "min(40%, 560px)", marginLeft: "clamp(24px, 6.5vw, 130px)", marginRight: "auto" }}>
+          <div style={{ fontFamily: "var(--font-sans)", fontWeight: 500, fontSize: "clamp(11px, 0.95vw, 13px)", letterSpacing: "0.28em", textTransform: "uppercase", color: "var(--fg-gold)" }}>A Nordic Childhood</div>
+          <h2 style={{ fontFamily: "var(--font-serif)", fontWeight: 500, fontSize: "clamp(34px, 4.6vw, 72px)", lineHeight: 1.02, color: "var(--fg-1)", margin: "clamp(14px, 1.6vw, 24px) 0 0", textWrap: "balance" }}>
+            Bring a little Nordic <em style={{ color: "var(--fg-gold)", fontWeight: 400 }}>calm</em> into childhood.
+          </h2>
+          <div style={{ display: "flex", alignItems: "center", gap: 14, margin: "clamp(18px, 2vw, 28px) 0 0" }}>
+            <div style={{ height: 1, background: "var(--rule-gold)", width: 80 }} />
+            <span style={{ color: "var(--color-gold)", lineHeight: 0 }}><Knot size={14} /></span>
+            <div style={{ height: 1, background: "var(--rule-gold)", width: 80 }} />
+          </div>
+          <p style={{ fontFamily: "var(--font-sans)", fontSize: "clamp(14px, 1.25vw, 18px)", lineHeight: 1.7, color: "var(--fg-2)", marginTop: "clamp(16px, 1.9vw, 28px)" }}>
+            A printable PDF journal for ages 5 to 8 — full of nature, feelings, courage, and quiet wonder.
+          </p>
+          <div style={{ marginTop: "clamp(22px, 2.6vw, 36px)" }}>
+            <button onClick={onBuy} style={{ fontFamily: "var(--font-sans)", fontWeight: 500, fontSize: 14, letterSpacing: "0.08em", padding: "18px 36px", background: "var(--color-pine)", color: "var(--color-birch)", border: "1px solid var(--color-gold)", borderRadius: "var(--r-md)", cursor: "pointer", boxShadow: "var(--shadow-book)", display: "inline-flex", alignItems: "center", gap: 12 }}>
+              <Knot size={16} color="var(--color-gold)" />
+              <span style={{ textTransform: "uppercase", letterSpacing: "0.14em" }}>Buy the Book</span>
+            </button>
+          </div>
+          <div style={{ marginTop: "clamp(26px, 3vw, 44px)", display: "flex", gap: 24, flexWrap: "wrap", fontFamily: "var(--font-sans)", fontSize: 12, letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--fg-3)" }}>
+            <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Instant download
+            </span>
+            <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+              Print as many times as you want
+            </span>
+            <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              Make it theirs
+            </span>
+          </div>
+          <div style={{ marginTop: "clamp(28px, 3.2vw, 48px)", fontFamily: "var(--font-serif)", fontStyle: "italic", fontSize: "clamp(17px, 1.6vw, 22px)", lineHeight: 1.4, color: "var(--fg-gold)" }}>
+            Print what you need. Use it your way. Come back anytime.
+          </div>
+        </div>
+      </section>
+    );
+
+    // ─── Footer ──────────────────────────────────────────────────────────────────
+
+    const Footer = () => (
+      <footer style={{ background: "var(--color-pine)", color: "var(--color-birch)", padding: "44px 40px 36px" }}>
+        <div style={{ maxWidth: 1240, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 32, flexWrap: "wrap" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+            <span style={{ color: "var(--color-gold)", lineHeight: 0 }}><Knot size={22} /></span>
+            <span style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontWeight: 500, fontSize: 26, lineHeight: 1, color: "var(--color-birch)" }}>Erik Astrand</span>
+          </div>
+          <nav style={{ display: "flex", gap: 30, flexWrap: "wrap", fontFamily: "var(--font-sans)", fontSize: 14 }}>
+            {["The Book", "Inside", "For Parents", "Contact"].map((it) => (
+              <a key={it} href="#" style={{ color: "var(--color-birch)", textDecoration: "none", paddingBottom: 2, borderBottom: "1px solid transparent", transition: "border-color var(--dur-fast) var(--ease-paper)" }}
+                 onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(184,145,69,0.8)"; }}
+                 onMouseLeave={(e) => { e.currentTarget.style.borderColor = "transparent"; }}>
+                {it}
+              </a>
+            ))}
+          </nav>
+        </div>
+        <div style={{ maxWidth: 1240, margin: "24px auto 0", paddingTop: 18, borderTop: "1px solid rgba(247,242,232,0.16)", display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 12, fontFamily: "var(--font-sans)", fontSize: 12, color: "rgba(247,242,232,0.6)" }}>
+          <span>© {new Date().getFullYear()} Erik Astrand. All rights reserved.</span>
+          <span>A printable PDF journal for ages 5–8.</span>
+        </div>
+      </footer>
+    );
+
+    // ─── BuyModal ────────────────────────────────────────────────────────────────
+
+    const BuyModal = ({ onClose }) => {
+      React.useEffect(() => {
+        const fn = (e) => { if (e.key === "Escape") onClose(); };
+        document.addEventListener("keydown", fn);
+        return () => document.removeEventListener("keydown", fn);
+      }, [onClose]);
+      return (
+        <div onClick={onClose} style={{ position: "fixed", inset: 0, zIndex: 200, background: "rgba(46,32,20,0.78)", backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)", display: "flex", alignItems: "center", justifyContent: "center", padding: 24, animation: "fadeIn 280ms cubic-bezier(0.32,0.08,0.24,1)" }}>
+          <div onClick={(e) => e.stopPropagation()} style={{ background: "var(--bg-elevated)", borderRadius: "var(--r-lg)", boxShadow: "var(--shadow-book)", width: "min(520px, 100%)", padding: 48, position: "relative" }}>
+            <button onClick={onClose} aria-label="Close" style={{ position: "absolute", top: 16, right: 16, background: "transparent", border: "none", cursor: "pointer", color: "var(--fg-3)", padding: 8 }}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+            <div style={{ display: "flex", justifyContent: "center", marginBottom: 8 }}><PDFBadge /></div>
+            <h3 style={{ fontFamily: "var(--font-serif)", fontWeight: 500, fontSize: 32, lineHeight: 1.15, color: "var(--fg-1)", margin: "24px 0 0", textAlign: "center", textWrap: "balance" }}>
+              A Nordic Childhood
+            </h3>
+            <div style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontSize: 16, color: "var(--fg-2)", textAlign: "center", marginTop: 6 }}>
+              Nature, feelings, courage, and quiet wonder.
+            </div>
+            <div style={{ marginTop: 28, padding: "24px 0", textAlign: "center", borderTop: "1px solid var(--rule-gold)", borderBottom: "1px solid var(--rule-gold)" }}>
+              <div style={{ fontFamily: "var(--font-serif)", fontSize: 44, lineHeight: 1, color: "var(--fg-1)" }}>$24<span style={{ fontSize: 22, color: "var(--fg-3)" }}> USD</span></div>
+              <div style={{ fontFamily: "var(--font-sans)", fontSize: 13, color: "var(--fg-3)", marginTop: 6 }}>Printable PDF · instant download · print as many times as you want</div>
+            </div>
+            <div style={{ marginTop: 24 }}>
+              <label style={{ display: "block", fontFamily: "var(--font-sans)", fontSize: 12, letterSpacing: "0.06em", color: "var(--fg-2)", marginBottom: 8 }}>Send the download link to</label>
+              <input placeholder="quiet@meadow.no" style={{ width: "100%", fontFamily: "var(--font-sans)", fontSize: 15, padding: "14px 16px", background: "var(--bg-page)", border: "1px solid var(--rule-medium)", borderRadius: "var(--r-md)", color: "var(--fg-1)", outline: "none", boxSizing: "border-box" }} />
+            </div>
+            <button style={{ marginTop: 20, width: "100%", fontFamily: "var(--font-sans)", fontWeight: 500, fontSize: 15, letterSpacing: "0.06em", padding: "16px 28px", background: "var(--color-book-brown)", color: "var(--color-birch)", border: "1px solid transparent", borderRadius: "var(--r-md)", cursor: "pointer" }}>
+              Complete purchase
+            </button>
+            <div style={{ textAlign: "center", marginTop: 16, fontFamily: "var(--font-sans)", fontSize: 12, color: "var(--fg-3)" }}>
+              Secure checkout · processed by Stripe
+            </div>
+          </div>
+        </div>
+      );
+    };
+
+    // ─── App ─────────────────────────────────────────────────────────────────────
+
+    const App = () => {
+      const [buying, setBuying] = React.useState(false);
+      const openBuy = () => setBuying(true);
+      const closeBuy = () => setBuying(false);
+      return (
+        <>
+          <Header onBuy={openBuy} />
+          <main>
+            <Hero onBuy={openBuy} />
+            <WhatItIs />
+            <NordicIdeas />
+            <InsidePages />
+            <ForTheChild />
+            <ForTheGrownUp />
+            <HowItWorks />
+            <FinalCTA onBuy={openBuy} />
+          </main>
+          <Footer />
+          {buying && <BuyModal onClose={closeBuy} />}
+        </>
+      );
+    };
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+
+  </script>
+</body>
+</html>
