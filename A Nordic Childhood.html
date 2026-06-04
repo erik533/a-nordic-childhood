@@ -141,6 +141,21 @@
 
   <script type="text/babel">
 
+    // ─── Stripe checkout ─────────────────────────────────────────────────────────
+    // Stripe-hosted Payment Link. Clicking "Complete purchase" sends the buyer to
+    // Stripe's secure checkout (it collects their email + payment).
+    // LIVE link below ($19 launch price) — real cards are charged. Created in the live Stripe
+    // Dashboard from the "A Nordic Childhood" product / $19 USD price.
+    // (A $19 TEST link also exists for sandbox testing: https://buy.stripe.com/test_3cIbJ0a7eb7YbIA1W30VO01)
+    const STRIPE_PAYMENT_LINK = "https://buy.stripe.com/dRmcN7da52H66aL0wkbfO01";
+
+    // ─── Pricing ─────────────────────────────────────────────────────────────────
+    // Launch offer: 50% off the eventual full price. The Stripe Payment Link above
+    // must charge `launch`. When the bonuses are ready, set launch = full (38), and
+    // the strikethrough/discount label disappears on its own.
+    const PRICE = { full: 38, launch: 19, currency: "USD", discountLabel: "Launch offer · 50% off" };
+    const onLaunchOffer = PRICE.launch < PRICE.full;
+
     // ─── Shared primitives ──────────────────────────────────────────────────────
 
     const Knot = ({ size = 24, stroke = 1.2, color = "currentColor" }) => (
@@ -168,6 +183,26 @@
         ...style,
       }}>{children}</div>
     );
+
+    // Compact launch-offer pill: "50% OFF · LAUNCH  $19  $38" — shown in hero + final CTA.
+    const LaunchOffer = ({ style }) => {
+      if (!onLaunchOffer) return null;
+      return (
+        <div style={{
+          display: "inline-flex", alignItems: "center", gap: 11,
+          padding: "9px 15px", borderRadius: "var(--r-md)",
+          border: "1px solid var(--rule-gold)", background: "rgba(184,145,69,0.08)",
+          ...style,
+        }}>
+          <span style={{
+            fontFamily: "var(--font-sans)", fontWeight: 600, fontSize: 11,
+            letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--fg-gold)",
+          }}>50% off · launch</span>
+          <span style={{ fontFamily: "var(--font-serif)", fontSize: 19, lineHeight: 1, color: "var(--fg-1)" }}>${PRICE.launch}</span>
+          <span style={{ fontFamily: "var(--font-serif)", fontSize: 15, lineHeight: 1, color: "var(--fg-3)", textDecoration: "line-through" }}>${PRICE.full}</span>
+        </div>
+      );
+    };
 
     const Button = ({ variant = "primary", children, onClick, style }) => {
       const [hover, setHover] = React.useState(false);
@@ -354,6 +389,7 @@
                 <Button onClick={onBuy} style={{ justifyContent: "center" }}>Buy the Book</Button>
                 <Button variant="secondary" onClick={() => scrollTo("what")} style={{ justifyContent: "center" }}>Explore the Book</Button>
               </div>
+              <LaunchOffer style={{ marginTop: 22 }} />
               <div style={{ fontFamily: "var(--font-sans)", fontSize: 11, color: "var(--fg-3)", marginTop: 26, letterSpacing: "0.16em", textTransform: "uppercase" }}>
                 A printable PDF journal by Erik Astrand
               </div>
@@ -399,6 +435,8 @@
               <Button onClick={onBuy}>Buy the Book</Button>
               <Button variant="secondary" onClick={() => scrollTo("what")}>Explore the Book</Button>
             </div>
+
+            <LaunchOffer style={{ marginTop: 28 }} />
 
             <div style={{ fontFamily: "var(--font-sans)", fontSize: 12, color: "var(--fg-3)", marginTop: 32, letterSpacing: "0.16em", textTransform: "uppercase" }}>
               A printable PDF journal by Erik Astrand
@@ -810,6 +848,7 @@
                   <Knot size={16} color="var(--color-gold)" />
                   <span style={{ textTransform: "uppercase", letterSpacing: "0.14em" }}>Buy the Book</span>
                 </button>
+                <LaunchOffer style={{ marginTop: 16 }} />
               </div>
               <div style={{ marginTop: 26, display: "flex", flexDirection: "column", gap: 12, fontFamily: "var(--font-sans)", fontSize: 12, letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--fg-3)" }}>
                 <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
@@ -851,6 +890,7 @@
               <Knot size={16} color="var(--color-gold)" />
               <span style={{ textTransform: "uppercase", letterSpacing: "0.14em" }}>Buy the Book</span>
             </button>
+            <LaunchOffer style={{ marginTop: 18, marginLeft: 4 }} />
           </div>
           <div style={{ marginTop: "clamp(26px, 3vw, 44px)", display: "flex", gap: 24, flexWrap: "wrap", fontFamily: "var(--font-sans)", fontSize: 12, letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--fg-3)" }}>
             <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
@@ -947,18 +987,22 @@
               Nature, feelings, courage, and quiet wonder.
             </div>
             <div style={{ marginTop: 28, padding: "24px 0", textAlign: "center", borderTop: "1px solid var(--rule-gold)", borderBottom: "1px solid var(--rule-gold)" }}>
-              <div style={{ fontFamily: "var(--font-serif)", fontSize: 44, lineHeight: 1, color: "var(--fg-1)" }}>$24<span style={{ fontSize: 22, color: "var(--fg-3)" }}> USD</span></div>
+              {onLaunchOffer && (
+                <div style={{ fontFamily: "var(--font-sans)", fontWeight: 600, fontSize: 12, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--fg-gold)", marginBottom: 10 }}>{PRICE.discountLabel}</div>
+              )}
+              <div style={{ fontFamily: "var(--font-serif)", fontSize: 44, lineHeight: 1, color: "var(--fg-1)", display: "flex", alignItems: "baseline", justifyContent: "center", gap: 12 }}>
+                {onLaunchOffer && (
+                  <span style={{ fontSize: 26, color: "var(--fg-3)", textDecoration: "line-through" }}>${PRICE.full}</span>
+                )}
+                <span>${PRICE.launch}<span style={{ fontSize: 22, color: "var(--fg-3)" }}> {PRICE.currency}</span></span>
+              </div>
               <div style={{ fontFamily: "var(--font-sans)", fontSize: 13, color: "var(--fg-3)", marginTop: 6 }}>Printable PDF · instant download · print as many times as you want</div>
             </div>
-            <div style={{ marginTop: 24 }}>
-              <label style={{ display: "block", fontFamily: "var(--font-sans)", fontSize: 12, letterSpacing: "0.06em", color: "var(--fg-2)", marginBottom: 8 }}>Send the download link to</label>
-              <input placeholder="quiet@meadow.no" style={{ width: "100%", fontFamily: "var(--font-sans)", fontSize: 15, padding: "14px 16px", background: "var(--bg-page)", border: "1px solid var(--rule-medium)", borderRadius: "var(--r-md)", color: "var(--fg-1)", outline: "none", boxSizing: "border-box" }} />
-            </div>
-            <button style={{ marginTop: 20, width: "100%", fontFamily: "var(--font-sans)", fontWeight: 500, fontSize: 15, letterSpacing: "0.06em", padding: "16px 28px", background: "var(--color-book-brown)", color: "var(--color-birch)", border: "1px solid transparent", borderRadius: "var(--r-md)", cursor: "pointer" }}>
+            <button onClick={() => { window.location.href = STRIPE_PAYMENT_LINK; }} style={{ marginTop: 28, width: "100%", fontFamily: "var(--font-sans)", fontWeight: 500, fontSize: 15, letterSpacing: "0.06em", padding: "16px 28px", background: "var(--color-book-brown)", color: "var(--color-birch)", border: "1px solid transparent", borderRadius: "var(--r-md)", cursor: "pointer" }}>
               Complete purchase
             </button>
             <div style={{ textAlign: "center", marginTop: 16, fontFamily: "var(--font-sans)", fontSize: 12, color: "var(--fg-3)" }}>
-              Secure checkout · processed by Stripe
+              Secure checkout · processed by Stripe · instant download
             </div>
           </div>
         </div>
