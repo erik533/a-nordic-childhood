@@ -19,7 +19,6 @@ if (!token) {
 } else {
   try {
     const participant = await api("/api/participant", { token });
-    document.querySelector("#first-name").textContent = participant.firstName;
     document.querySelector("#deadline").textContent = formatDate(participant.deadline);
     document.querySelector("#feedback-link").href = `/founding-families/feedback/#token=${encodeURIComponent(token)}`;
     loading.classList.add("hidden");
