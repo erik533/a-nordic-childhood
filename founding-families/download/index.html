@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your First Numbers pilot — A Nordic Childhood</title>
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="referrer" content="no-referrer">
+  <link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@400;500;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/founding-families/styles.css">
+</head>
+<body>
+  <header class="site-header"><div class="shell header-inner"><a class="brand" href="/"><span class="brand-mark">◇</span><span class="brand-name">A Nordic Childhood</span></a><span class="quiet-link">Private pilot page</span></div></header>
+  <main class="utility-main">
+    <div class="narrow">
+      <div id="loading" class="loading">Opening your pilot place…</div>
+      <section id="invalid" class="utility-card hidden">
+        <div class="eyebrow">Private link needed</div><h1>This link is incomplete.</h1>
+        <p>Please open the private download link in your acceptance email. If it still does not work, write to <a href="mailto:erik@erikastrand.com">erik@erikastrand.com</a>.</p>
+      </section>
+      <section id="download-card" class="utility-card hidden">
+        <div class="eyebrow">Your First Numbers pilot</div>
+        <h1>Welcome, <span id="first-name"></span>.</h1>
+        <p>Your honest observations matter more than a perfect session. If printing fails or your child wants to stop, that is useful feedback too.</p>
+        <div class="download-grid">
+          <img class="download-cover" src="/founding-families/assets/first-numbers-scenic.png" alt="First Numbers pilot cover">
+          <div>
+            <h2>1. Download and print</h2>
+            <p>Choose the paper size used by your printer. Print at actual size or 100%, in colour if convenient. You will also need a pencil or crayon and eight small objects.</p>
+            <div class="download-actions">
+              <button class="button" type="button" data-edition="a4">Download A4 edition</button>
+              <button class="button secondary" type="button" data-edition="us_letter">Download US Letter edition</button>
+            </div>
+            <p id="download-status" class="form-status" aria-live="polite"></p>
+          </div>
+        </div>
+        <div class="note">
+          <strong>2. Try it in two short sittings.</strong>
+          <p>Follow the grown-up directions, but do not teach toward a “right” performance. Notice where the child pauses, changes strategy, asks for help, or loses interest.</p>
+        </div>
+        <div class="note">
+          <strong>3. Send your feedback by <span id="deadline"></span>.</strong>
+          <p>The form takes about 8–10 minutes. A real attempt and a concrete report count—even if you stop early.</p>
+          <a id="feedback-link" class="button" href="/founding-families/feedback/">Open the feedback form</a>
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="shell footer-inner"><span>© <span id="year"></span> A Nordic Childhood</span><a href="/founding-families/privacy/">Pilot privacy note</a></div></footer>
+  <script type="module" src="/founding-families/download/download.js"></script>
+</body>
+</html>
