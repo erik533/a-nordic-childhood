@@ -3,6 +3,10 @@
     {
       "path": "/api/reminders",
       "schedule": "15 8 * * *"
+    },
+    {
+      "path": "/api/retention",
+      "schedule": "45 8 * * *"
     }
   ],
   "headers": [
@@ -12,6 +16,19 @@
         { "key": "Referrer-Policy", "value": "no-referrer" },
         { "key": "X-Content-Type-Options", "value": "nosniff" },
         { "key": "X-Frame-Options", "value": "SAMEORIGIN" }
+      ]
+    },
+    {
+      "source": "/founding-families/review/(.*)",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow, noarchive" },
+        { "key": "Cache-Control", "value": "no-store" }
+      ]
+    },
+    {
+      "source": "/founding-families/files/(.*)",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow, noarchive" }
       ]
     }
   ]

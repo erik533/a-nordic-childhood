@@ -1,11 +1,8 @@
+let landingSessionId;
+
 export function getLandingSessionId() {
-  const key = "anc_founding_session";
-  let value = sessionStorage.getItem(key);
-  if (!value) {
-    value = crypto.randomUUID();
-    sessionStorage.setItem(key, value);
-  }
-  return value;
+  if (!landingSessionId) landingSessionId = crypto.randomUUID();
+  return landingSessionId;
 }
 
 export function getToken() {

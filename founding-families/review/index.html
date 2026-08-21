@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pilot review | A Nordic Childhood</title>
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="referrer" content="no-referrer">
+  <link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@400;500;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/founding-families/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <span class="brand"><span class="brand-mark">◇</span><span class="brand-name">A Nordic Childhood</span></span>
+      <span class="quiet-link">Private pilot review</span>
+    </div>
+  </header>
+  <main class="utility-main">
+    <section id="admin-login" class="narrow utility-card">
+      <div class="eyebrow">Private operator page</div>
+      <h1>Open the pilot review.</h1>
+      <form id="admin-login-form">
+        <div class="field">
+          <label for="admin-secret">Admin passphrase</label>
+          <input id="admin-secret" type="password" autocomplete="current-password" required>
+        </div>
+        <div class="form-actions">
+          <button class="button" type="submit">Open review</button>
+          <div id="login-status" class="form-status" role="status" aria-live="polite"></div>
+        </div>
+      </form>
+    </section>
+
+    <section id="admin-dashboard" class="shell admin-dashboard hidden">
+      <div class="admin-heading">
+        <div><div class="eyebrow">First Numbers pilot</div><h1>Review and cohort control</h1></div>
+        <button id="refresh-admin" class="button secondary" type="button">Refresh</button>
+      </div>
+      <div id="admin-status" class="form-status" role="status" aria-live="polite"></div>
+      <div id="admin-summary" class="admin-summary"></div>
+
+      <section class="admin-panel">
+        <h2>Applications waiting</h2>
+        <div id="pending-list" class="admin-list"></div>
+      </section>
+
+      <section id="wave-gate" class="admin-panel hidden">
+        <h2>Open the remaining fifteen places</h2>
+        <p>Confirm each gate against the counts and feedback below.</p>
+        <div id="gate-confirmation" class="gate-checks">
+          <label class="check-row"><input type="checkbox"><span>Every operational email failure is resolved.</span></label>
+          <label class="check-row"><input type="checkbox"><span>At least three families downloaded the pack.</span></label>
+          <label class="check-row"><input type="checkbox"><span>At least three families completed qualifying feedback, or the deadline and grace period ended and I diagnosed the shortfall.</span></label>
+          <label class="check-row"><input type="checkbox"><span>No repeated technical failure remains.</span></label>
+          <label class="check-row"><input type="checkbox"><span>I reviewed the responses and found no product blocker.</span></label>
+        </div>
+        <button id="open-second-wave" class="button" type="button">Open the second wave</button>
+      </section>
+
+      <section id="close-gate" class="admin-panel hidden">
+        <h2>Close and review the cohort</h2>
+        <p>Use this only when recruitment and follow-up are finished. It closes applications and starts the 90-day retention clock.</p>
+        <label class="check-row"><input id="close-confirmation" type="checkbox"><span>I have finished the cohort review and want to close this pilot.</span></label>
+        <button id="close-cohort" class="button secondary" type="button">Close the cohort</button>
+      </section>
+
+      <section class="admin-panel">
+        <h2>Participant status</h2>
+        <div class="table-wrap"><table class="admin-table">
+          <thead><tr><th>Adult</th><th>Status</th><th>Download</th><th>Feedback</th><th>Email</th><th>Action</th></tr></thead>
+          <tbody id="participant-list"></tbody>
+        </table></div>
+      </section>
+
+      <section class="admin-panel">
+        <h2>First feedback</h2>
+        <div id="feedback-list" class="admin-list"></div>
+      </section>
+    </section>
+  </main>
+  <script type="module" src="/founding-families/review/review.js"></script>
+</body>
+</html>

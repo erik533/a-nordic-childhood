@@ -2,8 +2,8 @@ import { bearerToken, isSameOrigin, json, methodNotAllowed, parseBody } from "..
 import { cleanText, safeMetadata } from "../lib/security.js";
 import { findParticipant, recordEvent } from "../lib/supabase.js";
 
-const ANONYMOUS_EVENTS = new Set(["landing_view", "application_start"]);
-const PARTICIPANT_EVENTS = new Set(["download_view", "feedback_start"]);
+const ANONYMOUS_EVENTS = new Set(["landing_view", "application_started"]);
+const PARTICIPANT_EVENTS = new Set(["download_view", "feedback_started"]);
 
 export default async function handler(req, res) {
   if (req.method !== "POST") return methodNotAllowed(res, ["POST"]);

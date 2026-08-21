@@ -1,5 +1,13 @@
-import { assessEligibility, validateApplication } from "../lib/eligibility.js";
-import { acceptedEmail, notNowEmail, sendEmail, waitlistEmail } from "../lib/email.js";
+import { attributionFromInput } from "../lib/attribution.js";
+import { validateApplication } from "../lib/eligibility.js";
+import {
+  acceptedEmail,
+  adminApplicationEmail,
+  notNowEmail,
+  pendingReviewEmail,
+  sendEmail,
+  waitlistEmail,
+} from "../lib/email.js";
 import { isSameOrigin, json, methodNotAllowed, parseBody } from "../lib/http.js";
 import { cleanEmail, cleanText, createParticipantToken, hashToken } from "../lib/security.js";
 import { recordEvent, supabase, updateParticipant } from "../lib/supabase.js";
@@ -16,12 +24,7 @@ export default async function handler(req, res) {
       adultFirstName: cleanText(raw.adultFirstName, 80),
       adultEmail: cleanEmail(raw.adultEmail),
       childAgeBand: cleanText(raw.childAgeBand, 30),
-      activityLanguage: cleanText(raw.activityLanguage, 80),
-      countsAloud: cleanText(raw.countsAloud, 30),
-      countsFive: cleanText(raw.countsFive, 30),
-      matchesNumerals: cleanText(raw.matchesNumerals, 30),
-      composesNumbers: cleanText(raw.composesNumbers, 30),
-      printerFormat: cleanText(raw.printerFormat, 30),
+      learningStage: cleanText(raw.learningStage, 30),
       participationConfirmed: raw.participationConfirmed === true,
       privacyConfirmed: raw.privacyConfirmed === true,
     };
@@ -31,9 +34,8 @@ export default async function handler(req, res) {
     const startedAt = Number(raw.formStartedAt || 0);
     if (startedAt && Date.now() - startedAt < 2500) return json(res, 429, { error: "please_try_again" });
 
-    const assessment = assessEligibility(input);
+    const attribution = attributionFromInput(raw, process.env.PUBLIC_SITE_URL);
     const token = createParticipantToken();
-    const cohortCap = Math.max(1, Math.min(100, Number(process.env.PILOT_COHORT_CAP || 20)));
     const params = {
       p_token_hash: hashToken(token),
       p_delivery_token: token,
@@ -41,21 +43,13 @@ export default async function handler(req, res) {
       p_adult_first_name: input.adultFirstName,
       p_adult_email: input.adultEmail,
       p_child_age_band: input.childAgeBand,
-      p_activity_language: input.activityLanguage,
-      p_counts_aloud: input.countsAloud,
-      p_counts_five: input.countsFive,
-      p_matches_numerals: input.matchesNumerals,
-      p_composes_numbers: input.composesNumbers,
-      p_printer_format: input.printerFormat,
-      p_qualification_reason: assessment.reason,
-      p_qualified: assessment.qualified,
-      p_source: cleanText(raw.source, 120),
-      p_utm_source: cleanText(raw.utmSource, 120),
-      p_utm_medium: cleanText(raw.utmMedium, 120),
-      p_utm_campaign: cleanText(raw.utmCampaign, 120),
-      p_cohort_cap: cohortCap,
+      p_learning_stage: input.learningStage,
+      p_source: attribution.source,
+      p_utm_source: attribution.utmSource,
+      p_utm_medium: attribution.utmMedium,
+      p_utm_campaign: attribution.utmCampaign,
     };
-    const result = await supabase("rpc/pilot_apply", {
+    const result = await supabase("rpc/pilot_apply_v2", {
       method: "POST",
       body: JSON.stringify(params),
     });
@@ -64,22 +58,52 @@ export default async function handler(req, res) {
       id: result.id,
       adult_first_name: input.adultFirstName,
       adult_email: input.adultEmail,
+      child_age_band: input.childAgeBand,
+      learning_stage: input.learningStage,
+      source: attribution.source,
       status: result.status,
       personal_deadline: result.deadline,
     };
     const deliveryToken = result.delivery_token || token;
-    const message = result.status === "accepted"
+    const message = participant.status === "accepted"
       ? acceptedEmail({ firstName: input.adultFirstName, deadline: result.deadline, token: deliveryToken })
-      : result.status === "waitlisted"
-        ? waitlistEmail({ firstName: input.adultFirstName })
-        : notNowEmail({ firstName: input.adultFirstName });
+      : participant.status === "pending_review"
+        ? pendingReviewEmail({ firstName: input.adultFirstName })
+        : participant.status === "waitlisted"
+          ? waitlistEmail({ firstName: input.adultFirstName })
+          : notNowEmail({ firstName: input.adultFirstName });
 
     try {
       const delivery = await sendEmail({ to: input.adultEmail, ...message });
-      await recordEvent({ participantId: result.id, sessionId: params.p_landing_session_id, name: "delivery_email_sent", metadata: { providerId: delivery.id } });
+      await recordEvent({
+        participantId: result.id,
+        sessionId: params.p_landing_session_id,
+        name: "application_email_sent",
+        metadata: { providerId: delivery.id, status: participant.status },
+      });
     } catch (error) {
-      await updateParticipant(result.id, { email_delivery_failed_at: new Date().toISOString() });
-      await recordEvent({ participantId: result.id, sessionId: params.p_landing_session_id, name: "delivery_email_failed", metadata: { message: error.message } });
+      await updateParticipant(result.id, {
+        email_delivery_failed_at: new Date().toISOString(),
+        email_failure_kind: "application_status",
+        updated_at: new Date().toISOString(),
+      });
+      await recordEvent({
+        participantId: result.id,
+        sessionId: params.p_landing_session_id,
+        name: "application_email_failed",
+        metadata: { message: error.message, status: participant.status },
+      });
+    }
+
+    if (participant.status === "pending_review" && !result.existing) {
+      try {
+        await sendEmail({
+          to: process.env.PILOT_SUPPORT_EMAIL || "erik@erikastrand.com",
+          ...adminApplicationEmail({ participant }),
+        });
+      } catch (error) {
+        console.error("admin_application_email_failed", error);
+      }
     }
 
     return json(res, 200, {

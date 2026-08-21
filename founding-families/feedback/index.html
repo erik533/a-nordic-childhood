@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>First Numbers pilot feedback — A Nordic Childhood</title>
-  <meta name="robots" content="noindex,nofollow">
+  <title>First Numbers feedback | A Nordic Childhood</title>
+  <meta name="robots" content="noindex,nofollow,noarchive">
   <meta name="referrer" content="no-referrer">
   <link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,49 +13,111 @@
   <link rel="stylesheet" href="/founding-families/styles.css">
 </head>
 <body>
-  <header class="site-header"><div class="shell header-inner"><a class="brand" href="/"><span class="brand-mark">◇</span><span class="brand-name">A Nordic Childhood</span></a><span class="quiet-link">Private feedback</span></div></header>
+  <header class="site-header"><div class="shell header-inner"><span class="brand"><span class="brand-mark">◇</span><span class="brand-name">A Nordic Childhood</span></span><span class="quiet-link">Personal feedback page</span></div></header>
   <main class="utility-main">
     <div class="narrow">
-      <div id="loading" class="loading">Opening your feedback form…</div>
-      <section id="invalid" class="utility-card hidden"><div class="eyebrow">Private link needed</div><h1>This link is incomplete.</h1><p>Open the feedback link in your pilot email or download page. For help, write to <a href="mailto:erik@erikastrand.com">erik@erikastrand.com</a>.</p></section>
-      <section id="complete" class="utility-card hidden"><div class="status-mark" aria-hidden="true">✓</div><div class="eyebrow">Feedback received</div><h1>Thank you. This is the useful part.</h1><p>Your observations are now queued for review. We will email you about the thank-you reward after checking that the report is usable; a stopped session or printing problem can still count.</p></section>
+      <div id="loading" class="loading">Opening your feedback form...</div>
+      <section id="invalid" class="utility-card hidden">
+        <div class="eyebrow">Personal link needed</div><h1>This link is incomplete.</h1>
+        <p>Please use the feedback link in your pilot email or download page. If it still does not work, write to <a href="mailto:erik@erikastrand.com">erik@erikastrand.com</a>.</p>
+      </section>
+
+      <section id="expired" class="utility-card hidden">
+        <div class="eyebrow">Pilot window closed</div><h1>The feedback period has ended.</h1>
+        <p>The seven-day period and three-day grace period have ended. If a technical problem prevented you from responding, write to <a href="mailto:erik@erikastrand.com">erik@erikastrand.com</a>.</p>
+      </section>
+
       <section id="form-card" class="utility-card hidden">
-        <div class="eyebrow">8–10 minute grown-up report</div>
-        <h1>What actually happened?</h1>
-        <p>Specific moments help more than praise. Please do not include your child’s name, school, exact birth date, photograph, or video.</p>
-        <form id="feedback-form" class="feedback-form">
+        <div class="eyebrow">Five short prompts</div>
+        <h1>Tell us what happened.</h1>
+        <p>There is no ideal session to report. A pause, a wrong turn, an early stop, or a printing problem may be the most helpful part.</p>
+        <form id="feedback-form" class="feedback-form" novalidate>
           <input class="honeypot" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <fieldset><legend>Printing and use</legend><div class="form-grid">
-            <div class="field"><label for="printed">Could you print it? *</label><select id="printed" name="printed" required><option value="">Choose…</option><option value="yes">Yes</option><option value="partly">Partly</option><option value="no">No</option></select></div>
-            <div class="field"><label for="sittings">How many sittings did you try? *</label><select id="sittings" name="sittings" required><option value="">Choose…</option><option value="0">None — printing or timing stopped us</option><option value="1">One</option><option value="2">Two</option><option value="3_plus">Three or more</option></select></div>
-            <div class="field full"><label for="print-friction">What, if anything, made printing difficult?</label><textarea id="print-friction" name="printFriction"></textarea></div>
-            <div class="field full"><span class="field-label">Which sections did you use?</span><div class="checkbox-grid"><label class="option"><input type="checkbox" name="sectionsUsed" value="meet_two"> Meet Two</label><label class="option"><input type="checkbox" name="sectionsUsed" value="meet_five"> Meet Five</label><label class="option"><input type="checkbox" name="sectionsUsed" value="meet_eight"> Meet Eight</label></div></div>
-            <div class="field"><label for="used-objects">Did you use small objects? *</label><select id="used-objects" name="usedObjects" required><option value="">Choose…</option><option value="yes">Yes</option><option value="partly">For part of it</option><option value="no">No</option></select></div>
-            <div class="field"><label for="page-codes">Any page numbers or titles you noted?</label><input id="page-codes" name="pageCodes" type="text"></div>
-          </div></fieldset>
-          <fieldset><legend>What you noticed</legend><div class="form-grid">
-            <div class="field full"><label for="observation">Describe one concrete moment that surprised you or taught you something. *</label><textarea id="observation" name="concreteObservation" required placeholder="For example: On the five page, my child…"></textarea><small>One or two specific moments are enough.</small></div>
-            <div class="field full"><label for="instruction-friction">Where did the directions feel unclear or require extra explanation?</label><textarea id="instruction-friction" name="instructionFriction"></textarea></div>
-            <div class="field full"><span class="field-label">Did you notice any of these?</span><div class="checkbox-grid"><label class="option"><input type="checkbox" name="behaviours" value="stopped"> Wanted to stop</label><label class="option"><input type="checkbox" name="behaviours" value="rushed"> Rushed</label><label class="option"><input type="checkbox" name="behaviours" value="repeated"> Repeated an action</label><label class="option"><input type="checkbox" name="behaviours" value="returned"> Returned after a break</label><label class="option"><input type="checkbox" name="behaviours" value="asked_help"> Asked for help</label><label class="option"><input type="checkbox" name="behaviours" value="new_grouping"> Made a new grouping</label><label class="option"><input type="checkbox" name="behaviours" value="other"> Something else</label></div></div>
-            <div class="field"><label for="easiest-section">Which part seemed easiest?</label><input id="easiest-section" name="easiestSection" type="text"></div>
-            <div class="field"><label for="hardest-section">Which part seemed hardest?</label><input id="hardest-section" name="hardestSection" type="text"></div>
-            <div class="field full"><label for="difficulty-reason">What made that part difficult?</label><textarea id="difficulty-reason" name="difficultyReason"></textarea></div>
-          </div></fieldset>
-          <fieldset><legend>Design and next step</legend><div class="form-grid">
-            <div class="field"><label for="numeral-cues">How did the faint numeral cues feel?</label><select id="numeral-cues" name="numeralCues"><option value="">Choose…</option><option value="too_faint">Too faint</option><option value="about_right">About right</option><option value="too_dominant">Too dominant</option><option value="not_used">Not used or noticed</option></select></div>
-            <div class="field"><label for="knew-next">Did you usually know what to do next?</label><select id="knew-next" name="knewNext"><option value="">Choose…</option><option value="yes">Yes</option><option value="mostly">Mostly</option><option value="no">No</option></select></div>
-            <div class="field full"><label for="knew-next-note">Where did the next step feel uncertain?</label><textarea id="knew-next-note" name="knewNextNote"></textarea></div>
-            <div class="field"><label for="continue-next-week">Would you choose to continue next week? *</label><select id="continue-next-week" name="continueNextWeek" required><option value="">Choose…</option><option value="yes">Yes</option><option value="maybe">Maybe</option><option value="no">No</option></select></div>
-            <div class="field"><label for="continue-reason">Why?</label><textarea id="continue-reason" name="continueReason"></textarea></div>
-            <div class="field full"><label for="anything-else">Anything else we should know?</label><textarea id="anything-else" name="anythingElse"></textarea></div>
-            <label class="check-row field full"><input type="checkbox" name="followUpConsent"><span>You may email me one follow-up question about this report. This is not marketing consent.</span></label>
-          </div></fieldset>
-          <div><button class="button full" type="submit">Send my feedback</button><p id="form-status" class="form-status" aria-live="polite"></p></div>
+
+          <fieldset>
+            <legend>1. What were you able to do?</legend>
+            <div class="options">
+              <label class="option"><input type="radio" name="useOutcome" value="used_with_objects" required><span>We used at least one activity with small objects.</span></label>
+              <label class="option"><input type="radio" name="useOutcome" value="used_without_objects"><span>We used at least one activity without the small objects.</span></label>
+              <label class="option"><input type="radio" name="useOutcome" value="printing_blocked"><span>I tried to print, but printing stopped us.</span></label>
+              <label class="option"><input type="radio" name="useOutcome" value="not_tried"><span>We did not get to an activity.</span></label>
+            </div>
+            <div id="printing-note-field" class="field conditional hidden">
+              <label for="printing-note">What blocked printing?</label>
+              <textarea id="printing-note" name="printingNote"></textarea>
+            </div>
+          </fieldset>
+
+          <fieldset id="parts-field" class="hidden">
+            <legend>2. Which parts did you try?</legend>
+            <div class="checkbox-grid">
+              <label class="option"><input type="checkbox" name="partsUsed" value="meet_two"><span>Meet Two</span></label>
+              <label class="option"><input type="checkbox" name="partsUsed" value="meet_five"><span>Meet Five</span></label>
+              <label class="option"><input type="checkbox" name="partsUsed" value="meet_eight"><span>Meet Eight</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset id="observation-field" class="hidden">
+            <legend>3. Describe one moment you noticed.</legend>
+            <div class="field">
+              <label for="observed-moment">A response, pause, strategy, question, or loss of interest</label>
+              <textarea id="observed-moment" name="observedMoment" placeholder="For example: On the five page, my child..."></textarea>
+              <small>One concrete moment is enough.</small>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>4. What felt unclear or difficult?</legend>
+            <div class="field">
+              <label for="friction">For the child, the grown-up, or both</label>
+              <textarea id="friction" name="friction" required></textarea>
+              <small>If nothing felt unclear, write “Nothing.”</small>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>5. Would you choose another short First Numbers session next week?</legend>
+            <div class="options">
+              <label class="option"><input type="radio" name="continueChoice" value="yes" required><span>Yes</span></label>
+              <label class="option"><input type="radio" name="continueChoice" value="maybe"><span>Maybe</span></label>
+              <label class="option"><input type="radio" name="continueChoice" value="no"><span>No</span></label>
+            </div>
+            <div class="field conditional">
+              <label for="continue-reason">Why? <span class="muted">(optional)</span></label>
+              <textarea id="continue-reason" name="continueReason"></textarea>
+            </div>
+          </fieldset>
+
+          <div class="field">
+            <label for="anything-else">Anything else you want Erik to know? <span class="muted">(optional)</span></label>
+            <textarea id="anything-else" name="anythingElse"></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button class="button full" type="submit">Send my feedback</button>
+            <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
+          </div>
         </form>
+      </section>
+
+      <section id="complete" class="utility-card hidden">
+        <div class="status-mark" aria-hidden="true">✓</div>
+        <div class="eyebrow">Response received</div>
+        <h1 id="complete-title">Thank you for the honest report.</h1>
+        <div id="complete-copy">
+          <p>Your free copy of the finished digital First Numbers book is confirmed. There is no fixed release date yet because the pilot findings may change the book.</p>
+        </div>
+        <div id="marketing-invite" class="completion-choice hidden">
+          <h2>Would you like occasional First Numbers updates?</h2>
+          <p>This is a separate choice. It does not affect your pilot reward, and every marketing email will include an unsubscribe link.</p>
+          <button id="marketing-opt-in" class="button secondary" type="button">Yes, add me to updates</button>
+          <div id="marketing-status" class="form-status" role="status" aria-live="polite"></div>
+        </div>
+        <p><a href="/founding-families/download/" id="return-download">Return to your pilot page</a></p>
       </section>
     </div>
   </main>
-  <footer class="site-footer"><div class="shell footer-inner"><span>© <span id="year"></span> A Nordic Childhood</span><a href="/founding-families/privacy/">Pilot privacy note</a></div></footer>
+  <footer class="site-footer"><div class="shell footer-inner"><span>© <span id="year"></span> Erik Astrand, MalmaMedia</span><a href="/founding-families/privacy/">Pilot privacy</a></div></footer>
   <script type="module" src="/founding-families/feedback/feedback.js"></script>
 </body>
 </html>

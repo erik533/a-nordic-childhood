@@ -24,7 +24,7 @@ export default async function handler(req, res) {
       downloaded_edition: edition,
       updated_at: now,
     });
-    await recordEvent({ participantId: participant.id, sessionId: participant.landing_session_id, name: "pilot_download", metadata: { edition } });
+    await recordEvent({ participantId: participant.id, sessionId: participant.landing_session_id, name: "pack_downloaded", metadata: { edition } });
     return json(res, 200, { url: FILES[edition] });
   } catch (error) {
     console.error("download_failed", error);
