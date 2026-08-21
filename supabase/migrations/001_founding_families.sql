@@ -90,6 +90,12 @@ revoke all on public.pilot_events from anon, authenticated;
 revoke all on public.pilot_feedback from anon, authenticated;
 revoke all on public.pilot_token_delivery from anon, authenticated;
 
+grant select, update on public.pilot_participants to service_role;
+grant insert on public.pilot_events to service_role;
+grant select on public.pilot_token_delivery to service_role;
+grant select, insert, update on public.pilot_feedback to service_role;
+grant usage, select on sequence public.pilot_events_id_seq to service_role;
+
 create or replace function public.pilot_apply(
   p_token_hash text,
   p_delivery_token text,
