@@ -196,6 +196,15 @@ fieldset { margin: 0; padding: 18px; border: 1px solid var(--rule); border-radiu
 .admin-stat { padding: 18px; border: 1px solid var(--rule); border-radius: 10px; background: rgba(255,255,255,.4); }
 .admin-stat strong { display: block; font-family: var(--serif); font-size: 25px; font-weight: 500; text-transform: capitalize; }
 .admin-stat span { color: var(--brown-soft); font-size: 12px; }
+.traffic-periods { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 22px; }
+.traffic-card { padding: 20px; border: 1px solid var(--rule); border-radius: 10px; background: var(--paper); }
+.traffic-card h3 { font-size: 26px; }
+.traffic-metrics { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 18px 0 0; }
+.traffic-metrics div { border-top: 1px solid var(--rule); padding-top: 9px; }
+.traffic-metrics dt { color: var(--brown-soft); font-size: 11px; text-transform: uppercase; letter-spacing: .08em; }
+.traffic-metrics dd { margin: 2px 0 0; font-family: var(--serif); font-size: 25px; }
+.traffic-heading { margin: 28px 0 10px; }
+.traffic-note { margin: 14px 0 0; }
 .admin-panel { padding: 28px; border: 1px solid var(--rule); border-radius: 14px; background: rgba(255,255,255,.38); }
 .admin-panel h2 { font-size: 36px; margin-bottom: 20px; }
 .admin-list { display: grid; gap: 14px; }
@@ -220,6 +229,7 @@ fieldset { margin: 0; padding: 18px; border: 1px solid var(--rule); border-radiu
   .preview-card { display: grid; grid-template-columns: minmax(190px, .8fr) 1fr; }
   .preview-card img { border-right: 1px solid var(--rule); border-bottom: 0; }
   .admin-summary { grid-template-columns: repeat(3, 1fr); }
+  .traffic-periods { grid-template-columns: 1fr; }
   .form-grid { grid-template-columns: 1fr; }
   .field.full { grid-column: auto; }
   .download-cover { width: min(220px, 60vw); }

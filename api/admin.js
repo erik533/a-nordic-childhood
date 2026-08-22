@@ -3,6 +3,7 @@ import { acceptedEmail, feedbackCompleteEmail, noUseEmail, notNowEmail, pendingR
 import { json, methodNotAllowed, parseBody } from "../lib/http.js";
 import { cleanText } from "../lib/security.js";
 import { recordEvent, supabase, updateParticipant } from "../lib/supabase.js";
+import { aggregateTraffic } from "../lib/traffic.js";
 
 async function participantToken(participantId) {
   const rows = await supabase(`pilot_token_delivery?participant_id=eq.${encodeURIComponent(participantId)}&select=delivery_token`);
@@ -28,10 +29,11 @@ async function sendStatusEmail(participant, token = "") {
 }
 
 async function dashboard() {
-  const [settingsRows, participants, feedback] = await Promise.all([
+  const [settingsRows, participants, feedback, trafficEvents] = await Promise.all([
     supabase("pilot_settings?pilot_key=eq.first_numbers_v1&select=*"),
     supabase("pilot_participants?select=id,adult_first_name,adult_email,child_age_band,learning_stage,source,utm_source,utm_medium,utm_campaign,status,decision_reason,created_at,reviewed_at,accepted_at,personal_deadline,downloaded_at,downloaded_edition,feedback_status,reward_status,completion_qualified_at,email_delivery_failed_at,email_failure_kind,landing_session_id&order=created_at.desc"),
     supabase("pilot_feedback?select=participant_id,use_outcome,sections_used,printing_note,concrete_observation,instruction_friction,continue_next_week,continue_reason,anything_else,updated_at&order=updated_at.desc"),
+    supabase("pilot_events?select=id,participant_id,landing_session_id,event_name,metadata,occurred_at&event_name=in.(landing_view,application_started,application_submitted)&order=occurred_at.asc&limit=5000"),
   ]);
   const counts = participants.reduce((result, participant) => {
     result[participant.status] = (result[participant.status] || 0) + 1;
@@ -47,6 +49,7 @@ async function dashboard() {
     pending: participants.filter((participant) => participant.status === "pending_review"),
     participants,
     feedback,
+    traffic: aggregateTraffic(trafficEvents),
   };
 }
 

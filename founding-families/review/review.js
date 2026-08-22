@@ -6,6 +6,8 @@ const loginForm = document.querySelector("#admin-login-form");
 const loginStatus = document.querySelector("#login-status");
 const adminStatus = document.querySelector("#admin-status");
 const summary = document.querySelector("#admin-summary");
+const trafficPeriods = document.querySelector("#traffic-periods");
+const trafficSources = document.querySelector("#traffic-sources");
 const pendingList = document.querySelector("#pending-list");
 const participantList = document.querySelector("#participant-list");
 const feedbackList = document.querySelector("#feedback-list");
@@ -41,6 +43,51 @@ function stat(label, value) {
   const card = element("div", undefined, "admin-stat");
   card.append(element("strong", String(value)), element("span", label));
   return card;
+}
+
+function trafficCard(label, values) {
+  const card = element("article", undefined, "traffic-card");
+  card.append(element("h3", label));
+  const metrics = element("dl", undefined, "traffic-metrics");
+  [["Visits", values.visits], ["Started", values.started], ["Applied", values.submitted], ["Conversion", `${values.conversion}%`]].forEach(([name, value]) => {
+    const item = element("div");
+    item.append(element("dt", name), element("dd", String(value)));
+    metrics.append(item);
+  });
+  card.append(metrics);
+  return card;
+}
+
+function renderTraffic() {
+  const traffic = latest.traffic || { periods: {}, sources: [] };
+  const empty = { visits: 0, started: 0, submitted: 0, conversion: 0 };
+  trafficPeriods.replaceChildren(
+    trafficCard("Today", traffic.periods.today || empty),
+    trafficCard("Last 7 days", traffic.periods.sevenDays || empty),
+    trafficCard("All time", traffic.periods.total || empty),
+  );
+
+  trafficSources.replaceChildren();
+  if (!traffic.sources.length) {
+    const row = document.createElement("tr");
+    const cell = element("td", "No visits recorded yet.");
+    cell.colSpan = 5;
+    row.append(cell);
+    trafficSources.append(row);
+    return;
+  }
+
+  traffic.sources.forEach((source) => {
+    const row = document.createElement("tr");
+    row.append(
+      element("td", source.source),
+      element("td", String(source.visits)),
+      element("td", String(source.started)),
+      element("td", String(source.submitted)),
+      element("td", `${source.conversion}%`),
+    );
+    trafficSources.append(row);
+  });
 }
 
 function labelFor(value) {
@@ -158,6 +205,7 @@ function render() {
   );
   waveGate.classList.toggle("hidden", latest.settings?.phase !== "paused");
   closeGate.classList.toggle("hidden", !["paused", "second_wave"].includes(latest.settings?.phase));
+  renderTraffic();
   renderPending();
   renderParticipants();
   renderFeedback();

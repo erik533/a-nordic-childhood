@@ -44,6 +44,18 @@
       <div id="admin-summary" class="admin-summary"></div>
 
       <section class="admin-panel">
+        <h2>Visitor journey</h2>
+        <p class="micro">Privacy-friendly, approximate visits from the funnel events already stored in Supabase. A refresh or return visit may count again.</p>
+        <div id="traffic-periods" class="traffic-periods"></div>
+        <h3 class="traffic-heading">Traffic sources</h3>
+        <div class="table-wrap"><table class="admin-table">
+          <thead><tr><th>Source</th><th>Visits</th><th>Started</th><th>Applied</th><th>Conversion</th></tr></thead>
+          <tbody id="traffic-sources"></tbody>
+        </table></div>
+        <p class="micro traffic-note">Source reporting depends on the UTM links used in recruitment posts. Untagged visits appear as direct.</p>
+      </section>
+
+      <section class="admin-panel">
         <h2>Applications waiting</h2>
         <div id="pending-list" class="admin-list"></div>
       </section>
