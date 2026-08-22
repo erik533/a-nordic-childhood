@@ -1,5 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import { aggregateTraffic } from "../lib/traffic.js";
 
 const now = new Date("2026-08-22T10:00:00Z");
@@ -36,4 +37,9 @@ test("traffic counts approximate sessions and funnel conversion", () => {
 test("invalid timestamps are ignored", () => {
   const result = aggregateTraffic([event(1, "bad", "landing_view", "not-a-date")], now);
   assert.equal(result.periods.total.visits, 0);
+});
+
+test("traffic migration grants the private API read access", async () => {
+  const sql = await readFile(new URL("../supabase/migrations/003_private_traffic_stats.sql", import.meta.url), "utf8");
+  assert.match(sql, /grant select on public\.pilot_events to service_role/i);
 });

@@ -35,7 +35,11 @@ async function adminApi({ method = "GET", body } = {}) {
     body: body ? JSON.stringify(body) : undefined,
   });
   const payload = await response.json().catch(() => ({}));
-  if (!response.ok) throw new Error(payload.error || "request_failed");
+  if (!response.ok) {
+    const error = new Error(payload.error || "request_failed");
+    error.status = response.status;
+    throw error;
+  }
   return payload;
 }
 
@@ -231,9 +235,13 @@ loginForm.addEventListener("submit", async (event) => {
     login.classList.add("hidden");
     dashboard.classList.remove("hidden");
     render();
-  } catch {
+  } catch (error) {
     secret = "";
-    setStatus(loginStatus, "That passphrase did not open the review.", "error");
+    setStatus(
+      loginStatus,
+      error.status === 401 ? "That passphrase did not open the review." : "The review could not load. Please try again shortly.",
+      "error",
+    );
   }
 });
 
