@@ -46,11 +46,11 @@ export default function Home() {
 
       <section className="hero" id="top">
         <div className="hero-copy">
-          <p className="eyebrow">A NORDIC WAY TO LEARN AT HOME</p>
-          <h1>Let numbers, letters, nature, and the child&apos;s own ideas grow together.</h1>
+          <p className="eyebrow">A NORDIC CHILDHOOD: THE LEARNING COLLECTION</p>
+          <h1>One useful page is enough.</h1>
           <p className="hero-lede">
-            A printable learning collection for children beginning numbers, letters,
-            early writing, and a wider understanding of themselves and the world around them.
+            A Nordic printable collection for early numbers, letters, meaningful writing,
+            nature, and feelings. Choose what fits your child today. Leave the rest for later.
           </p>
           <div className="hero-actions">
             <a className="primary-button" href="#collection">
