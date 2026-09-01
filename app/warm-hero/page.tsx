@@ -1,4 +1,6 @@
+import Link from 'next/link';
 import './warm-hero.css';
+import CheckoutLink from './CheckoutLink';
 import PagePreview from './PagePreview';
 
 const progression = [
@@ -198,14 +200,14 @@ export default function HeroBackgroundTest() {
           </p>
 
           <div className="background-actions">
-            <a className="background-button" href={checkoutUrl}>
+            <CheckoutLink className="background-button" href={checkoutUrl} placement="hero">
               <span>Get the complete collection</span>
               <span className="background-arrow" aria-hidden="true">
                 <svg viewBox="0 0 20 20" focusable="false">
                   <path d="M4 10h11M11 6l4 4-4 4" />
                 </svg>
               </span>
-            </a>
+            </CheckoutLink>
             <span className="background-price">
               <strong>US $29 once</strong>
               <small>Digital download. Printable PDFs.</small>
@@ -448,7 +450,7 @@ export default function HeroBackgroundTest() {
           <p>The complete printable collection, 313 pages for US $29 once.</p>
         </div>
         <div className="warm-midpoint-action">
-          <a href={checkoutUrl}>Get the complete collection</a>
+          <CheckoutLink href={checkoutUrl} placement="midpoint">Get the complete collection</CheckoutLink>
           <small>Digital download. Printable PDFs.</small>
         </div>
       </section>
@@ -689,7 +691,7 @@ export default function HeroBackgroundTest() {
               <li>Personal household use</li>
             </ul>
             <p className="warm-purchase-price"><span>US</span> $29 <small>one time</small></p>
-            <a className="warm-purchase-button" href={checkoutUrl}>Get the complete collection</a>
+            <CheckoutLink className="warm-purchase-button" href={checkoutUrl} placement="offer">Get the complete collection</CheckoutLink>
             <p className="warm-purchase-note">Digital download. Printable PDFs.</p>
           </aside>
         </div>
@@ -735,7 +737,7 @@ export default function HeroBackgroundTest() {
             <li>Personal household use</li>
           </ul>
           <p className="warm-closing-price">US $29 <span>one time</span></p>
-          <a href={checkoutUrl}>Get the complete collection</a>
+          <CheckoutLink href={checkoutUrl} placement="closing">Get the complete collection</CheckoutLink>
           <small>Digital download. Printable PDFs.</small>
         </aside>
 
@@ -746,7 +748,10 @@ export default function HeroBackgroundTest() {
           <span aria-hidden="true">✣</span>
           <strong>A NORDIC CHILDHOOD</strong>
         </a>
-        <p>Rooted in Nordic childhood. Made for families everywhere.</p>
+        <div className="warm-footer-meta">
+          <p>Rooted in Nordic childhood. Made for families everywhere.</p>
+          <Link href="/privacy">Privacy</Link>
+        </div>
       </footer>
     </main>
   );

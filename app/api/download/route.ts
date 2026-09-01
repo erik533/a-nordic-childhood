@@ -2,6 +2,7 @@ import { get } from '@vercel/blob';
 import { cookies } from 'next/headers';
 import { NextResponse, type NextRequest } from 'next/server';
 import { verifyDownloadClaim } from '@/lib/purchase';
+import { trackServerEventSafely } from '@/lib/server-analytics';
 
 export const runtime = 'nodejs';
 export const maxDuration = 300;
@@ -24,6 +25,10 @@ export async function GET(request: NextRequest) {
 
   if (!result?.stream || result.statusCode !== 200) {
     return new NextResponse('The download is temporarily unavailable. Please contact erik@erikastrand.com.', { status: 503 });
+  }
+
+  if (!request.nextUrl.search) {
+    await trackServerEventSafely('Download Access', undefined, request.headers);
   }
 
   const headers = new Headers({

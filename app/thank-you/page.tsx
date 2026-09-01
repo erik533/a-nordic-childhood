@@ -1,15 +1,19 @@
 import { cookies } from 'next/headers';
 import Link from 'next/link';
+import { safeCampaignKey } from '@/lib/analytics';
 import { verifyDownloadClaim } from '@/lib/purchase';
+import PurchaseAnalytics from './PurchaseAnalytics';
 import styles from './thank-you.module.css';
 
-export default async function ThankYouPage({ searchParams }: { searchParams: Promise<{ status?: string }> }) {
-  const { status } = await searchParams;
+export default async function ThankYouPage({ searchParams }: { searchParams: Promise<{ campaign?: string; purchase?: string; status?: string }> }) {
+  const { campaign, purchase, status } = await searchParams;
   const cookieStore = await cookies();
   const authorised = status !== 'problem' && verifyDownloadClaim(cookieStore.get('anc_download_access')?.value);
+  const recordPurchase = authorised && purchase === 'verified';
 
   return (
     <main className={styles.page}>
+      {recordPurchase ? <PurchaseAnalytics campaign={safeCampaignKey(campaign)} /> : null}
       <section className={styles.card}>
         <p className={styles.eyebrow}>A NORDIC CHILDHOOD</p>
         {authorised ? (
@@ -25,7 +29,10 @@ export default async function ThankYouPage({ searchParams }: { searchParams: Pro
             <p>No second payment is needed. Please return to the Stripe confirmation page and use its link again, or email erik@erikastrand.com for help.</p>
           </>
         )}
-        <Link className={styles.returnLink} href="/">Return to A Nordic Childhood</Link>
+        <nav className={styles.links} aria-label="Thank-you page links">
+          <Link href="/">Return to A Nordic Childhood</Link>
+          <Link href="/privacy">Privacy</Link>
+        </nav>
       </section>
     </main>
   );

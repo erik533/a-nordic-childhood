@@ -2864,6 +2864,22 @@
   font-style: italic;
 }
 
+.warm-footer-meta {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.warm-footer-meta a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  border-bottom: 1px solid rgba(47, 73, 59, .35);
+  color: #415348;
+  font-size: 11px;
+  font-weight: 700;
+}
+
 @media (max-width: 920px) {
   .warm-closing { grid-template-columns: 1fr; }
 
@@ -2890,6 +2906,8 @@
     justify-content: center;
     text-align: center;
   }
+
+  .warm-footer-meta { flex-direction: column; gap: 0; }
 }
 
 /* Research, with its limits visible */

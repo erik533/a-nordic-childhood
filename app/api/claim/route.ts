@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from 'next/server';
-import { createDownloadClaim, verifyPaidCheckoutSession } from '@/lib/purchase';
+import { campaignKey } from '@/lib/analytics';
+import { createDownloadClaim, getDownloadClaimSessionId, verifyPaidCheckoutSession } from '@/lib/purchase';
 
 export const runtime = 'nodejs';
 
@@ -11,6 +12,12 @@ export async function GET(request: NextRequest) {
     if (!sessionId || !(await verifyPaidCheckoutSession(sessionId))) {
       destination.searchParams.set('status', 'problem');
       return NextResponse.redirect(destination, 303);
+    }
+
+    const existingSessionId = getDownloadClaimSessionId(request.cookies.get('anc_download_access')?.value);
+    if (existingSessionId !== sessionId) {
+      destination.searchParams.set('purchase', 'verified');
+      destination.searchParams.set('campaign', campaignKey(request.nextUrl.search));
     }
 
     const response = NextResponse.redirect(destination, 303);

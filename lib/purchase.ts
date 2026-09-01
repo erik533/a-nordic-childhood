@@ -61,14 +61,20 @@ export function createDownloadClaim(sessionId: string) {
   return `${payload}.${signature(payload)}`;
 }
 
-export function verifyDownloadClaim(value?: string) {
-  if (!value) return false;
+export function getDownloadClaimSessionId(value?: string) {
+  if (!value) return undefined;
   const [sessionId, expiresValue, suppliedSignature] = value.split('.');
   const expires = Number(expiresValue);
-  if (!sessionId || !Number.isFinite(expires) || !suppliedSignature || expires < Date.now() / 1000) return false;
+  if (!sessionId || !Number.isFinite(expires) || !suppliedSignature || expires < Date.now() / 1000) return undefined;
 
   const payload = `${sessionId}.${expires}`;
   const expected = Buffer.from(signature(payload));
   const supplied = Buffer.from(suppliedSignature);
-  return expected.length === supplied.length && timingSafeEqual(expected, supplied);
+  return expected.length === supplied.length && timingSafeEqual(expected, supplied)
+    ? sessionId
+    : undefined;
+}
+
+export function verifyDownloadClaim(value?: string) {
+  return getDownloadClaimSessionId(value) !== undefined;
 }
