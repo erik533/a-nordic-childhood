@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'A Nordic Childhood | The Learning Collection',
     description: 'A printable Nordic learning collection for early numbers, letters, meaningful writing, nature, feelings, and quiet courage.',
-    images: [{ url: '/og.png', width: 1731, height: 909 }],
+    images: [{ url: '/a-nordic-childhood-social-preview-v2.png', width: 1731, height: 909 }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'A Nordic Childhood | The Learning Collection',
     description: 'A printable Nordic learning collection for early numbers, letters, meaningful writing, nature, feelings, and quiet courage.',
-    images: ['/og.png'],
+    images: ['/a-nordic-childhood-social-preview-v2.png'],
   },
 };
 
