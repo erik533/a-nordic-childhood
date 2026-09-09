@@ -12,9 +12,8 @@
   padding: clamp(36px, 7vw, 72px);
   border: 1px solid rgba(47, 73, 59, .16);
   border-radius: 24px;
-  background: rgba(255, 253, 248, .84);
+  background: rgba(255, 253, 248, .88);
   box-shadow: 0 24px 70px rgba(49, 54, 45, .1);
-  text-align: center;
 }
 
 .eyebrow {
@@ -27,59 +26,92 @@
 .card h1 {
   margin: 0;
   font-family: Georgia, 'Times New Roman', serif;
-  font-size: clamp(42px, 7vw, 72px);
+  font-size: clamp(42px, 7vw, 68px);
   font-weight: 400;
   letter-spacing: -.035em;
   line-height: 1.02;
 }
 
-.card > p:not(.eyebrow) {
-  max-width: 540px;
-  margin: 28px auto 0;
+.card > p:not(.eyebrow, .notice, .help) {
+  margin: 24px 0 0;
   color: #4b5a51;
   font-family: Georgia, 'Times New Roman', serif;
   font-size: 19px;
   line-height: 1.6;
 }
 
-.button {
-  display: inline-flex;
-  min-height: 54px;
-  align-items: center;
-  justify-content: center;
-  margin-top: 34px;
-  padding: 0 28px;
-  border-radius: 14px;
-  background: #b44731;
-  color: white;
-  font-weight: 700;
-  text-decoration: none;
-  box-shadow: 0 15px 30px rgba(124, 54, 40, .18);
-}
-
-.card small {
-  display: block;
-  max-width: 480px;
-  margin: 18px auto 0;
-  color: #667168;
-  line-height: 1.5;
-}
-
-.card .recovery {
-  max-width: 500px;
-  margin: 20px auto 0;
-  color: #56645b;
-  font-family: inherit;
-  font-size: 14px;
+.notice {
+  margin: 24px 0 0;
+  padding: 14px 16px;
+  border: 1px solid rgba(180, 71, 49, .3);
+  border-radius: 12px;
+  background: rgba(180, 71, 49, .08);
   line-height: 1.55;
 }
 
-.recovery a { color: #365747; text-underline-offset: 3px; }
+.notice a,
+.links a { color: #365747; }
+
+.form {
+  display: grid;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.form label {
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.form input {
+  min-height: 50px;
+  padding: 10px 13px;
+  border: 1px solid rgba(47, 73, 59, .28);
+  border-radius: 10px;
+  background: #fffdf8;
+  color: #24372d;
+  font: inherit;
+}
+
+.form input:focus-visible,
+.form button:focus-visible,
+.links a:focus-visible {
+  outline: 3px solid rgba(180, 71, 49, .45);
+  outline-offset: 3px;
+}
+
+.form button {
+  min-height: 54px;
+  margin-top: 16px;
+  border: 0;
+  border-radius: 14px;
+  background: #b44731;
+  color: white;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  box-shadow: 0 15px 30px rgba(124, 54, 40, .18);
+}
+
+.trap {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.help {
+  margin: 18px 0 0;
+  color: #667168;
+  font-size: 13px;
+  line-height: 1.5;
+}
 
 .links {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 12px 24px;
   margin-top: 28px;
 }
@@ -88,14 +120,11 @@
   display: inline-flex;
   min-height: 44px;
   align-items: center;
-  color: #365747;
-  text-decoration: underline;
-  text-decoration-color: rgba(54, 87, 71, .35);
   text-underline-offset: 4px;
 }
 
 @media (max-width: 560px) {
   .page { padding: 18px; }
   .card { padding: 38px 24px; border-radius: 18px; }
-  .button { width: 100%; padding: 0 18px; }
+  .form button { width: 100%; }
 }

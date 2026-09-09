@@ -3,6 +3,7 @@
 import { track } from '@vercel/analytics';
 import type { MouseEventHandler, ReactNode } from 'react';
 import { attributedCheckoutUrl, campaignKey } from '@/lib/analytics';
+import { trackMetaEvent } from '@/lib/meta-pixel';
 
 type CheckoutPlacement = 'hero' | 'midpoint' | 'offer' | 'closing';
 
@@ -22,6 +23,13 @@ export default function CheckoutLink({ children, className, href, placement }: C
       track('Checkout Click', {
         placement,
         campaign: campaignKey(search),
+      });
+      trackMetaEvent('InitiateCheckout', {
+        content_ids: ['anc-learning-collection'],
+        content_name: 'A Nordic Childhood: The Learning Collection',
+        content_type: 'product',
+        currency: 'USD',
+        value: 29,
       });
     } catch {
       // Analytics must never interrupt checkout.

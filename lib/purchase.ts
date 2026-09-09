@@ -16,6 +16,15 @@ type StripeCheckoutSession = {
   amount_total?: number;
   currency?: string;
   line_items?: { data?: StripeLineItem[] };
+  payment_intent?: string | {
+    latest_charge?: string | {
+      receipt_number?: string | null;
+    };
+  };
+};
+
+type StripeCheckoutSessionList = {
+  data?: StripeCheckoutSession[];
 };
 
 function signingSecret() {
@@ -43,16 +52,63 @@ export async function verifyPaidCheckoutSession(sessionId: string) {
   if (!response.ok) return false;
 
   const session = await response.json() as StripeCheckoutSession;
+  return isExpectedPaidSession(session, sessionId);
+}
+
+function isExpectedPaidSession(session: StripeCheckoutSession, sessionId?: string) {
   const hasExpectedProduct = session.line_items?.data?.some((item) => {
     const product = item.price?.product;
     return typeof product === 'object' && product?.name === PRODUCT_NAME && item.amount_total === EXPECTED_AMOUNT;
   });
 
-  return session.id === sessionId
+  return (!sessionId || session.id === sessionId)
     && session.payment_status === 'paid'
     && session.amount_total === EXPECTED_AMOUNT
     && session.currency === EXPECTED_CURRENCY
     && hasExpectedProduct === true;
+}
+
+export async function findPaidCheckoutSessionByReceipt(email: string, receiptNumber: string) {
+  const secretKey = process.env.STRIPE_SECRET_KEY;
+  if (!secretKey) throw new Error('STRIPE_SECRET_KEY is not configured');
+
+  const url = new URL('https://api.stripe.com/v1/checkout/sessions');
+  url.searchParams.set('customer_details[email]', email.trim().toLowerCase());
+  url.searchParams.set('status', 'complete');
+  url.searchParams.set('limit', '10');
+  url.searchParams.append('expand[]', 'data.line_items.data.price.product');
+
+  const response = await fetch(url, {
+    headers: { Authorization: `Bearer ${secretKey}` },
+    cache: 'no-store',
+  });
+  if (!response.ok) return undefined;
+
+  const sessions = await response.json() as StripeCheckoutSessionList;
+  const expectedReceipt = receiptNumber.trim().toUpperCase();
+
+  for (const session of sessions.data || []) {
+    if (!session.id || !isExpectedPaidSession(session)) continue;
+    const paymentIntentId = typeof session.payment_intent === 'string'
+      ? session.payment_intent
+      : undefined;
+    if (!paymentIntentId) continue;
+
+    const paymentUrl = new URL(`https://api.stripe.com/v1/payment_intents/${encodeURIComponent(paymentIntentId)}`);
+    paymentUrl.searchParams.append('expand[]', 'latest_charge');
+    const paymentResponse = await fetch(paymentUrl, {
+      headers: { Authorization: `Bearer ${secretKey}` },
+      cache: 'no-store',
+    });
+    if (!paymentResponse.ok) continue;
+
+    const payment = await paymentResponse.json() as StripeCheckoutSession['payment_intent'];
+    const charge = typeof payment === 'object' ? payment.latest_charge : undefined;
+    const actualReceipt = typeof charge === 'object' ? charge.receipt_number?.toUpperCase() : undefined;
+    if (actualReceipt && actualReceipt === expectedReceipt) return session.id;
+  }
+
+  return undefined;
 }
 
 export function createDownloadClaim(sessionId: string) {
