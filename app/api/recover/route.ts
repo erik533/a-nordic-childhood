@@ -32,7 +32,8 @@ export async function POST(request: NextRequest) {
       maxAge: 60 * 60 * 24 * 7,
     });
     return response;
-  } catch {
+  } catch (error) {
+    console.error('Purchase recovery failed:', error instanceof Error ? error.message : 'Unknown error');
     destination.searchParams.set('status', 'problem');
     return NextResponse.redirect(destination, 303);
   }

@@ -7,7 +7,7 @@ import { trackServerEventSafely } from '@/lib/server-analytics';
 export const runtime = 'nodejs';
 export const maxDuration = 300;
 
-const DEFAULT_BLOB_PATH = 'products/A-Nordic-Childhood-Learning-Collection-v1.0.zip';
+const DEFAULT_BLOB_PATH = 'products/A-Nordic-Childhood-v1.0.zip';
 
 export async function GET(request: NextRequest) {
   const cookieStore = await cookies();
@@ -33,7 +33,7 @@ export async function GET(request: NextRequest) {
 
   const headers = new Headers({
     'Content-Type': result.blob.contentType || 'application/zip',
-    'Content-Disposition': 'attachment; filename="A-Nordic-Childhood-Learning-Collection-v1.0.zip"',
+    'Content-Disposition': 'attachment; filename="A-Nordic-Childhood-v1.0.zip"',
     'Cache-Control': 'private, no-store',
     'X-Content-Type-Options': 'nosniff',
   });
