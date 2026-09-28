@@ -7,16 +7,19 @@ import { attributedFirstLettersCheckoutUrl } from '@/lib/checkout-attribution';
 import { FIRST_LETTERS_CHECKOUT_URL } from '@/lib/first-letters-offer';
 import { readMetaConsent, trackMetaEvent } from '@/lib/meta-pixel';
 
-function currentDestination() {
-  let includeAdClickIds = false;
+function hasCheckoutAdConsent() {
   try {
-    includeAdClickIds = readMetaConsent() === 'granted'
+    return readMetaConsent() === 'granted'
       && !(navigator as Navigator & { globalPrivacyControl?: boolean }).globalPrivacyControl;
   } catch {
     // Blocked browser storage means no permission to forward ad click IDs.
+    return false;
   }
+}
+
+function currentDestination() {
   return attributedFirstLettersCheckoutUrl(FIRST_LETTERS_CHECKOUT_URL, window.location.search, {
-    includeAdClickIds,
+    includeAdClickIds: hasCheckoutAdConsent(),
   });
 }
 
@@ -74,7 +77,7 @@ export default function FirstLettersPurchaseLink({
         checkout_ready: destination.startsWith('http'),
       });
 
-      if (destination.startsWith('http')) {
+      if (destination.startsWith('http') && hasCheckoutAdConsent()) {
         trackMetaEvent('InitiateCheckout', {
           content_ids: ['anc-first-letters-set'],
           content_name: 'A Nordic Childhood: First Letters 3-Book Set',
