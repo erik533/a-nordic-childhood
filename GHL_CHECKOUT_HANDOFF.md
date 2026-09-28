@@ -2,7 +2,7 @@
 
 ## Offer and integration
 
-Preserve the approved `/first-letters` sales page, copy, layout and imagery. The offer is **US $10 once** for three printable PDF books: First Letters, Words Together and Extra Letter Practice. It is a digital download, not a physical shipment or subscription.
+Preserve the approved `/first-letters` sales page, copy, layout and imagery. The displayed offer is **Only $10** for three US Half Letter printable PDF books: First Letters, Words Together and Extra Letter Practice. The price remains USD 10 as a one-time payment. It is a digital download, not a physical shipment or subscription. Purchase reassurance identifies the format as **US Half Letter**.
 
 The production checkout belongs in a **GoHighLevel V2 Funnel**, with Stripe as its underlying processor. Any post-purchase one-click upsell also belongs inside GHL. This change creates neither a Vercel checkout nor a Vercel upsell.
 
@@ -52,10 +52,12 @@ Use these existing files, without generating replacement covers or artwork:
 
 | Repository path under `public/first-letters/` | Size | Role |
 | --- | --- | --- |
-| `hero-three-book-set.png` | 1448 × 1086 | Supplied approved $10 three-book hero |
+| `hero-three-book-set-clean-price.png` | 1448 × 1086 | Current $10 three-book hero, with the stray underline beneath the 1 removed |
 | `first-letters-cover.png` | 1053 × 1494 | First Letters |
 | `words-together-cover.png` | 2336 × 3504 | Words Together |
 | `extra-letter-practice-cover.png` | 1024 × 1536 | Extra Letter Practice |
+
+The original supplied `hero-three-book-set.png` is retained as a source/rollback asset. The corrected hero was made with the built-in image editor using the instruction: remove only the short white underline beneath the 1 in the $10 badge; preserve the price, caption, book covers and composition.
 
 The offer cover composition places **First Letters in front**, Words Together on the left, Extra Letter Practice on the right. Keep cover proportions and titles legible. Do not use imagery for the $29 collection.
 

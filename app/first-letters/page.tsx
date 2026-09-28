@@ -14,14 +14,14 @@ export const metadata: Metadata = {
   alternates: { canonical: '/first-letters' },
   openGraph: {
     title: 'First Letters & First Words | A Nordic Childhood',
-    description: 'Three printable PDF books for first letters, meaningful first words and optional extra practice. US $10 once.',
-    images: [{ url: '/first-letters/hero-three-book-set.png', width: 1448, height: 1086 }],
+    description: 'Three printable PDF books for first letters, meaningful first words and optional extra practice. US Half Letter. Only $10.',
+    images: [{ url: '/first-letters/hero-three-book-set-clean-price.png', width: 1448, height: 1086 }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'First Letters & First Words | A Nordic Childhood',
-    description: 'Three printable PDF books for first letters, meaningful first words and optional extra practice. US $10 once.',
-    images: ['/first-letters/hero-three-book-set.png'],
+    description: 'Three printable PDF books for first letters, meaningful first words and optional extra practice. US Half Letter. Only $10.',
+    images: ['/first-letters/hero-three-book-set-clean-price.png'],
   },
 };
 
@@ -116,7 +116,7 @@ export default function FirstLettersPage() {
           <h1 id="fl-hero-title">From first letters to first meaningful words.</h1>
           <div className="fl-hero-image fl-hero-image-mobile">
             <Image
-              src="/first-letters/hero-three-book-set.png"
+              src="/first-letters/hero-three-book-set-clean-price.png"
               alt="Three A Nordic Childhood printable books presented together with a $10 offer badge"
               width={1448}
               height={1086}
@@ -125,16 +125,16 @@ export default function FirstLettersPage() {
             />
           </div>
           <p className="fl-hero-body">Help your child meet letters, form them, and turn them into words that matter.</p>
-          <p className="fl-hero-price">US $10 once</p>
+          <p className="fl-hero-price">Only $10</p>
           <FirstLettersPurchaseLink className="fl-button" placement="hero" data-primary-cta="hero">
             Get the 3-book set
           </FirstLettersPurchaseLink>
-          <p className="fl-reassurance"><span>Digital download</span> · <span>3 printable PDFs</span> · <span>One-time purchase</span></p>
+          <p className="fl-reassurance"><span>Digital download</span> · <span>3 printable PDFs</span> · <span>US Half Letter</span></p>
           <a className="fl-inside-link" href="#see-inside">See what&apos;s inside <span aria-hidden="true">↓</span></a>
         </div>
         <div className="fl-hero-image fl-hero-image-desktop">
           <Image
-            src="/first-letters/hero-three-book-set.png"
+            src="/first-letters/hero-three-book-set-clean-price.png"
             alt="Three A Nordic Childhood printable books presented together with a $10 offer badge"
             width={1448}
             height={1086}
@@ -214,7 +214,7 @@ export default function FirstLettersPage() {
           <strong>First Letters + Words Together + Extra Letter Practice</strong>
           <small>Digital download · 3 printable PDFs</small>
         </div>
-        <p>US $10 once</p>
+        <p>Only $10</p>
         <FirstLettersPurchaseLink className="fl-button fl-button-light" placement="midpoint">Get the 3-book set</FirstLettersPurchaseLink>
       </section>
 
@@ -262,9 +262,9 @@ export default function FirstLettersPage() {
             <div><dt>Words Together</dt><dd>From First Words to Meaningful Writing</dd></div>
             <div><dt>Extra Letter Practice</dt><dd>Choose &amp; Practise A-Z</dd></div>
           </dl>
-          <p className="fl-offer-price">US $10 once</p>
+          <p className="fl-offer-price">Only $10</p>
           <FirstLettersPurchaseLink className="fl-button" placement="offer">Get the 3-book set</FirstLettersPurchaseLink>
-          <p className="fl-reassurance"><span>Instant digital access</span> · <span>3 printable PDFs</span> · <span>One-time purchase</span></p>
+          <p className="fl-reassurance"><span>Instant digital access</span> · <span>3 printable PDFs</span> · <span>US Half Letter</span></p>
           <p className="fl-offer-close">Print what you need. Come back anytime.</p>
         </div>
       </section>
@@ -285,9 +285,9 @@ export default function FirstLettersPage() {
         <h2 id="fl-final-title">One useful page is enough to begin.</h2>
         <p>Start with the page that fits today. The rest can wait.</p>
         <p className="fl-product-line">First Letters · Words Together · Extra Letter Practice</p>
-        <p className="fl-final-price">US $10</p>
+        <p className="fl-final-price">Only $10</p>
         <FirstLettersPurchaseLink className="fl-button" placement="closing">Get the 3-book set</FirstLettersPurchaseLink>
-        <p className="fl-reassurance">Digital download · 3 printable PDFs</p>
+        <p className="fl-reassurance"><span>Digital download</span> · <span>3 printable PDFs</span> · <span>US Half Letter</span></p>
       </section>
 
       <footer className="fl-footer">
