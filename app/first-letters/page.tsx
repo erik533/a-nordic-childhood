@@ -249,9 +249,9 @@ export default function FirstLettersPage() {
 
       <section className="fl-offer" id="purchase" aria-labelledby="fl-offer-title">
         <div className="fl-offer-covers" aria-label="The three printable books in the set">
-          <Image src="/first-letters/words-together-cover.png" alt="Cover of Words Together" width={2336} height={3504} sizes="(max-width: 720px) 30vw, 240px" quality={85} />
-          <Image src="/first-letters/first-letters-cover.png" alt="Cover of First Letters" width={1053} height={1494} sizes="(max-width: 720px) 30vw, 240px" quality={85} />
-          <Image src="/first-letters/extra-letter-practice-cover.png" alt="Cover of Extra Letter Practice" width={1024} height={1536} sizes="(max-width: 720px) 30vw, 220px" quality={85} />
+          <Image src="/first-letters/words-together-cover.png" alt="Cover of Words Together" width={2336} height={3504} sizes="(max-width: 720px) 30vw, (max-width: 860px) 240px, (max-width: 1800px) 16vw, 274px" quality={85} />
+          <Image src="/first-letters/first-letters-cover.png" alt="Cover of First Letters" width={1053} height={1494} sizes="(max-width: 720px) 30vw, (max-width: 860px) 240px, (max-width: 1800px) 20vw, 335px" quality={85} />
+          <Image src="/first-letters/extra-letter-practice-cover.png" alt="Cover of Extra Letter Practice" width={1024} height={1536} sizes="(max-width: 720px) 30vw, (max-width: 860px) 220px, (max-width: 1800px) 16vw, 274px" quality={85} />
         </div>
         <div className="fl-offer-copy">
           <h2 id="fl-offer-title">Begin with letters. Let words follow.</h2>
