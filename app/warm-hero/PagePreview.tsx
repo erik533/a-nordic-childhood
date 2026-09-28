@@ -1,5 +1,6 @@
 'use client';
 
+import { track } from '@vercel/analytics';
 import Image from 'next/image';
 import { useRef, useState } from 'react';
 
@@ -8,6 +9,7 @@ type PagePreviewProps = {
   alt: string;
   title: string;
   kind?: 'page' | 'cover';
+  trackingName?: string;
 };
 
 const imageDimensions: Record<string, { height: number; width: number }> = {
@@ -21,9 +23,15 @@ const imageDimensions: Record<string, { height: number; width: number }> = {
   '/progression-words-keepsake-hires.png': { width: 1679, height: 2382 },
   '/sisu-tree-page.png': { width: 918, height: 1188 },
   '/small-brave-things-page.png': { width: 1836, height: 2376 },
+  '/first-letters/meet-a.png': { width: 1343, height: 1905 },
+  '/first-letters/letters-in-my-name.png': { width: 1343, height: 1905 },
+  '/first-letters/from-voice-to-page.png': { width: 1343, height: 1905 },
+  '/first-letters/what-do-your-words-need-to-do.png': { width: 1343, height: 1905 },
+  '/first-letters/letter-a-practice.png': { width: 1343, height: 1905 },
+  '/first-letters/choose-and-practise.png': { width: 1343, height: 1905 },
 };
 
-export default function PagePreview({ src, alt, title, kind = 'page' }: PagePreviewProps) {
+export default function PagePreview({ src, alt, title, kind = 'page', trackingName }: PagePreviewProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [zoomed, setZoomed] = useState(false);
   const dimensions = imageDimensions[src] || { width: 1200, height: 1600 };
@@ -37,7 +45,16 @@ export default function PagePreview({ src, alt, title, kind = 'page' }: PagePrev
         className={`warm-stage-trigger${kind === 'cover' ? ' warm-cover-trigger' : ''}`}
         type="button"
         aria-label={`View ${title} ${kind} at full size`}
-        onClick={() => dialogRef.current?.showModal()}
+        onClick={() => {
+          dialogRef.current?.showModal();
+          if (trackingName) {
+            try {
+              track('First Letters Page Preview Opened', { preview: trackingName });
+            } catch {
+              // Analytics must never interrupt the preview.
+            }
+          }
+        }}
       >
         <Image
           src={src}
