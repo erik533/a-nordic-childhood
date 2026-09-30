@@ -65,6 +65,17 @@ export default function PreviewGallery() {
 
   return (
     <>
+      <div className="fl-preview-guidance">
+        <p className="fl-preview-hint">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+            <path d="m7 7-5 5 5 5M2 12h20m-5-5 5 5-5 5" />
+          </svg>
+          Swipe to explore
+        </p>
+        <p className="fl-preview-position" aria-live="polite" aria-atomic="true">
+          <strong>{active + 1}</strong> of {previews.length}
+        </p>
+      </div>
       <div className="fl-preview-grid" ref={scrollerRef} onScroll={updatePosition}>
         {previews.map((preview) => (
           <article className="fl-preview-card" key={preview.title}>
@@ -82,8 +93,6 @@ export default function PreviewGallery() {
           </article>
         ))}
       </div>
-      <p className="fl-preview-position" aria-live="polite">{active + 1} / {previews.length}</p>
     </>
   );
 }
-
