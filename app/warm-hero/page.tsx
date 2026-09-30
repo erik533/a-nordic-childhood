@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import './warm-hero.css';
 import CheckoutLink from './CheckoutLink';
 import PagePreview from './PagePreview';
@@ -167,22 +168,22 @@ export default function HeroBackgroundTest() {
         <div className="cover-background" role="img" aria-label="The five books in A Nordic Childhood: The Learning Collection">
           <div className="cover-object workbook cover-first-numbers">
             <span className="wire-binding" aria-hidden="true">{Array.from({ length: 10 }, (_, index) => <i key={index} />)}</span>
-            <img src="/hero-cover-first-numbers.png" alt="" />
+            <Image src="/hero-cover-first-numbers.png" alt="" width={480} height={682} sizes="(max-width: 720px) 30vw, 220px" loading="eager" />
           </div>
           <div className="cover-object workbook cover-numbers-together">
             <span className="wire-binding" aria-hidden="true">{Array.from({ length: 10 }, (_, index) => <i key={index} />)}</span>
-            <img src="/hero-cover-numbers-together.png" alt="" />
+            <Image src="/hero-cover-numbers-together.png" alt="" width={480} height={682} sizes="(max-width: 720px) 30vw, 220px" loading="eager" />
           </div>
           <div className="cover-object hardback cover-heart">
-            <img src="/cover-a-nordic-childhood.png" alt="" />
+            <Image src="/cover-a-nordic-childhood.png" alt="" width={1275} height={1650} sizes="(max-width: 720px) 42vw, 330px" loading="eager" fetchPriority="high" />
           </div>
           <div className="cover-object workbook cover-first-letters">
             <span className="wire-binding" aria-hidden="true">{Array.from({ length: 10 }, (_, index) => <i key={index} />)}</span>
-            <img src="/hero-cover-first-letters.png" alt="" />
+            <Image src="/hero-cover-first-letters.png" alt="" width={480} height={682} sizes="(max-width: 720px) 30vw, 220px" loading="eager" />
           </div>
           <div className="cover-object workbook cover-words-together">
             <span className="wire-binding" aria-hidden="true">{Array.from({ length: 10 }, (_, index) => <i key={index} />)}</span>
-            <img src="/hero-cover-words-together.png" alt="" />
+            <Image src="/hero-cover-words-together.png" alt="" width={480} height={682} sizes="(max-width: 720px) 30vw, 220px" loading="eager" />
           </div>
           <div className="pdf-seal" aria-hidden="true">
             <span>PRINTABLE</span>
@@ -233,19 +234,32 @@ export default function HeroBackgroundTest() {
 
       <section className="warm-nordic" id="nordic" aria-labelledby="warm-nordic-title">
         <div className="warm-nordic-copy">
-          <p className="warm-nordic-note">MORE THAN A VISUAL STYLE</p>
-          <h2 id="warm-nordic-title">Nordic is not the decoration. It is the way the collection sees childhood.</h2>
+          <p className="warm-nordic-note">WHY NORDIC?</p>
+          <h2 id="warm-nordic-title">Five of the six happiest countries in the world are Nordic.</h2>
+          <p className="warm-nordic-question">What, if anything, might that have to do with childhood?</p>
           <p className="warm-nordic-lede">
-            The collection is shaped by a childhood on the coast of Finland, where
-            time outdoors, room to notice, quiet courage, and enough rather than more
-            were part of ordinary life.
+            Finland, where I grew up, has now been ranked the world&apos;s happiest
+            country for nine years in a row.
+          </p>
+          <p className="warm-nordic-body">
+            I do not believe there is a secret Nordic formula for happiness. And no
+            book can promise a happy childhood. But I do believe it is worth looking
+            at what a Nordic childhood can make room for: time outdoors, ordinary
+            independence, feelings that can be named, quiet courage, and enough
+            rather than more. Those ideas shaped this collection.
+          </p>
+          <p className="warm-nordic-source">
+            Source:{' '}
+            <a
+              href="https://www.worldhappiness.report/news/world-happiness-report-2026-complex-global-picture-of-social-media-and-happiness/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              World Happiness Report 2026
+            </a>
+            . Rankings reflect how residents evaluate their lives, averaged across 2023 to 2025.
           </p>
           <p className="warm-nordic-for-everyone">Rooted in Nordic childhood. Made for families everywhere.</p>
-          <p className="warm-nordic-body">
-            That changes the learning pages too. Numbers begin with real quantities.
-            Letters meet useful sounds and natural forms. Early writing is allowed to
-            name something, preserve a moment, make a sign, or reach another person.
-          </p>
 
           <dl className="warm-nordic-ideas" aria-label="Nordic ideas in the collection">
             <div><dt>friluftsliv</dt><dd>outdoor life</dd></div>
@@ -290,6 +304,41 @@ export default function HeroBackgroundTest() {
               </div>
             </article>
           ))}
+        </div>
+      </section>
+
+      <section className="warm-sampler" id="quiet-start" aria-labelledby="warm-sampler-title">
+        <div className="warm-sampler-pages" aria-hidden="true">
+          <Image src="/progression-number-five-hires.png" alt="" width={1679} height={2382} sizes="(max-width: 720px) 52vw, 360px" quality={85} />
+          <Image src="/progression-letter-a-hires.png" alt="" width={1679} height={2382} sizes="(max-width: 720px) 52vw, 360px" quality={85} />
+          <Image src="/progression-words-keepsake-hires.png" alt="" width={1679} height={2382} sizes="(max-width: 720px) 52vw, 360px" quality={85} />
+        </div>
+
+        <div className="warm-sampler-copy">
+          <h2 id="warm-sampler-title">A first look, sent to your inbox.</h2>
+          <p className="warm-sampler-intro">
+            <i>A Quiet Start</i> is a free sampler made from a small selection of
+            real pages in the collection. Ask me for a copy, then print the page
+            that feels most relevant today.
+          </p>
+          <p>
+            One sampler cannot predict which of the 313 pages will interest your
+            child. It can show you the tone, instructions, and approach before you decide.
+          </p>
+
+          <div className="warm-sampler-form-shell">
+            <iframe
+              className="warm-sampler-form"
+              src="https://link.contentcreatormachine.com/widget/form/wmrfE0tovcS6hTJJnfg5?v=2"
+              title="Request A Quiet Start"
+              loading="lazy"
+            />
+          </div>
+          <p className="warm-sampler-note" id="warm-sampler-note">
+            Your sampler is sent whether or not you choose the five-day email series. By
+            submitting, you agree that we may use your email address to deliver the sampler.{' '}
+            <Link href="/privacy">Read the privacy notice.</Link>
+          </p>
         </div>
       </section>
 
@@ -488,11 +537,11 @@ export default function HeroBackgroundTest() {
 
         <div className="warm-founder-visual">
           <figure className="warm-founder-portrait">
-            <img src="/erik-forest-portrait.jpg" alt="Erik Åstrand sitting among rocks in a Nordic pine forest" />
+            <Image src="/erik-forest-portrait.jpg" alt="Erik Åstrand sitting among rocks in a Nordic pine forest" width={1920} height={1920} sizes="(max-width: 720px) 92vw, 520px" />
             <figcaption>Erik Åstrand, author of <i>A Nordic Childhood</i></figcaption>
           </figure>
           <figure className="warm-family-archive">
-            <img src="/fredrik-christmas-1985.jpg" alt="An early family page with Fredrik's Christmas words from Esplunda in 1985" />
+            <Image src="/fredrik-christmas-1985.jpg" alt="An early family page with Fredrik's Christmas words from Esplunda in 1985" width={2592} height={1728} sizes="(max-width: 720px) 74vw, 380px" />
             <figcaption>Fredrik&apos;s Christmas words, Esplunda, 1985.</figcaption>
           </figure>
         </div>
@@ -572,47 +621,6 @@ export default function HeroBackgroundTest() {
         </details>
       </section>
 
-      <section className="warm-sampler" id="quiet-start" aria-labelledby="warm-sampler-title">
-        <div className="warm-sampler-pages" aria-hidden="true">
-          <img src="/progression-number-five-hires.png" alt="" />
-          <img src="/progression-letter-a-hires.png" alt="" />
-          <img src="/progression-words-keepsake-hires.png" alt="" />
-        </div>
-
-        <div className="warm-sampler-copy">
-          <h2 id="warm-sampler-title">A first look, sent to your inbox.</h2>
-          <p className="warm-sampler-intro">
-            <i>A Quiet Start</i> is a free sampler made from a small selection of
-            real pages in the collection. Ask me for a copy, then print the page
-            that feels most relevant today.
-          </p>
-          <p>
-            One sampler cannot predict which of the 313 pages will interest your
-            child. It can show you the tone, instructions, and approach before you decide.
-          </p>
-
-          <div className="warm-sampler-delivery">
-            <p className="warm-sampler-personal">
-              <i>A Quiet Start</i> is currently sent personally. Email me and I’ll
-              reply with your sampler.
-            </p>
-            <a
-              className="warm-sampler-email-button"
-              href="mailto:erik@erikastrand.com?subject=A%20Quiet%20Start&body=Please%20send%20me%20A%20Quiet%20Start.%0D%0A%0D%0AI%20would%20also%20like%20to%20receive%20occasional%20emails%20from%20A%20Nordic%20Childhood.%20I%20can%20unsubscribe%20at%20any%20time."
-            >
-              Email me for A Quiet Start
-            </a>
-            <a className="warm-sampler-address" href="mailto:erik@erikastrand.com">
-              erik@erikastrand.com
-            </a>
-          </div>
-          <p className="warm-sampler-note" id="warm-sampler-note">
-            The prepared email includes an optional request for occasional updates.
-            Remove that sentence if you only want the sampler.
-          </p>
-        </div>
-      </section>
-
       <section className="warm-offer" id="collection" aria-labelledby="warm-offer-title">
         <header className="warm-offer-heading">
           <h2 id="warm-offer-title">Everything included for US $29 once.</h2>
@@ -678,9 +686,9 @@ export default function HeroBackgroundTest() {
 
           <aside className="warm-purchase">
             <div className="warm-purchase-covers" aria-hidden="true">
-              <img src="/cover-first-numbers.png" alt="" />
-              <img src="/cover-a-nordic-childhood.png" alt="" />
-              <img src="/cover-first-letters.png" alt="" />
+              <Image src="/cover-first-numbers.png" alt="" width={1054} height={1492} sizes="(max-width: 720px) 28vw, 160px" />
+              <Image src="/cover-a-nordic-childhood.png" alt="" width={1275} height={1650} sizes="(max-width: 720px) 28vw, 160px" />
+              <Image src="/cover-first-letters.png" alt="" width={1054} height={1492} sizes="(max-width: 720px) 28vw, 160px" />
             </div>
             <p className="warm-purchase-total"><strong>313</strong><span>pages across eight core PDFs</span></p>
             <ul>
@@ -751,6 +759,7 @@ export default function HeroBackgroundTest() {
         <div className="warm-footer-meta">
           <p>Rooted in Nordic childhood. Made for families everywhere.</p>
           <Link href="/privacy">Privacy</Link>
+          <Link href="/recover">Recover a purchase</Link>
         </div>
       </footer>
     </main>

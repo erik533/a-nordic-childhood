@@ -22,6 +22,7 @@ export default async function ThankYouPage({ searchParams }: { searchParams: Pro
             <p>Thank you. Your payment was received, and the complete printable collection is ready to download.</p>
             <a className={styles.button} href="/api/download">Download the complete collection</a>
             <small>The download is a ZIP file of approximately 216 MB. Please save it somewhere you can find again.</small>
+            <p className={styles.recovery}>Need the files on another device later? <Link href="/recover">Recover your purchase</Link> using the email and receipt number Stripe sends you.</p>
           </>
         ) : (
           <>
@@ -32,6 +33,7 @@ export default async function ThankYouPage({ searchParams }: { searchParams: Pro
         <nav className={styles.links} aria-label="Thank-you page links">
           <Link href="/">Return to A Nordic Childhood</Link>
           <Link href="/privacy">Privacy</Link>
+          <Link href="/recover">Recover a purchase</Link>
         </nav>
       </section>
     </main>

@@ -10,8 +10,8 @@ export const metadata: Metadata = {
 const sections = [
   ['responsible', 'Who is responsible'],
   ['information', 'Information we handle'],
-  ['analytics', 'Website analytics'],
-  ['cookie', 'Necessary cookie'],
+  ['analytics', 'Analytics and ad measurement'],
+  ['cookie', 'Cookies and your choice'],
   ['providers', 'Service providers'],
   ['retention', 'How long information is kept'],
   ['rights', 'Your rights'],
@@ -32,7 +32,7 @@ export default function PrivacyPage() {
         <section className={styles.introduction}>
           <div>
             <h1>Privacy, kept small.</h1>
-            <p className={styles.updated}>Last updated 1 September 2026</p>
+            <p className={styles.updated}>Last updated 9 September 2026</p>
           </div>
           <p className={styles.lede}>
             This notice explains how A Nordic Childhood handles information when you visit the site,
@@ -41,8 +41,8 @@ export default function PrivacyPage() {
         </section>
 
         <section className={styles.promise} aria-label="Privacy summary">
-          <strong>No advertising pixels. No cross-site profiles. No analytics cookies.</strong>
-          <p>We collect only what is needed to understand the site, complete a purchase, and deliver the files.</p>
+          <strong>Advertising measurement is optional. Payment and delivery stay private.</strong>
+          <p>Meta measurement loads only after you allow it. You can change that choice at any time.</p>
         </section>
 
         <div className={styles.contentLayout}>
@@ -84,11 +84,17 @@ export default function PrivacyPage() {
                 cookie. A successful download-access event is counted without sending the Stripe session,
                 download claim, email address, or file URL to analytics.
               </p>
+              <h3>When you recover a purchase</h3>
+              <p>
+                If you use purchase recovery, the site sends the checkout email and Stripe receipt number directly
+                to Stripe to match a completed purchase of this collection. We do not save either entry in a separate
+                customer database or send it to analytics. A successful match restores the same secure download cookie.
+              </p>
               <p>This website and checkout are intended for adults. We do not ask children to submit personal information.</p>
             </section>
 
             <section id="analytics">
-              <h2>Website analytics</h2>
+              <h2>Analytics and advertising measurement</h2>
               <p>
                 We use Vercel Web Analytics to understand aggregate visits, page views, referring sites, and
                 three actions: checkout clicks, verified purchase returns, and successful download access.
@@ -106,10 +112,22 @@ export default function PrivacyPage() {
                 works and where it can be improved. You can read more in{' '}
                 <a href="https://vercel.com/docs/analytics/privacy-policy" rel="noreferrer" target="_blank">Vercel&apos;s analytics privacy documentation</a>.
               </p>
+              <h3>Optional Meta advertising measurement</h3>
+              <p>
+                If you select <strong>Allow measurement</strong>, the site loads the Meta Pixel. It reports page
+                visits, checkout starts, and verified purchases to Meta, including the collection name, currency,
+                and price. Meta may connect those events with information from your browser or Meta account to
+                measure ads and help show them to people more likely to be interested.
+              </p>
+              <p>
+                We do not send payment details, Stripe session identifiers, download tokens, or the purchaser&apos;s
+                email address through the pixel. The legal basis is your consent. If you decline, the pixel does
+                not load and purchasing still works normally.
+              </p>
             </section>
 
             <section id="cookie">
-              <h2>Necessary cookie</h2>
+              <h2>Cookies and your choice</h2>
               <p>
                 After a verified purchase, the site sets one first-party cookie named <code>anc_download_access</code>.
                 It is secure, HttpOnly, limited to this site, and expires after seven days. It is used solely to
@@ -118,7 +136,14 @@ export default function PrivacyPage() {
               <p>
                 Because this cookie is necessary to provide the protected download you requested, the site does
                 not ask for consent before setting it. Blocking or deleting it prevents the site from authorising
-                the download until you return through Stripe&apos;s confirmation link.
+                the download until you return through Stripe&apos;s confirmation link or recover the purchase using
+                the checkout email and receipt number.
+              </p>
+              <p>
+                If you allow Meta measurement, Meta may set advertising cookies such as <code>_fbp</code> and
+                <code>_fbc</code>. Use the <strong>Privacy choices</strong> button on the site to withdraw consent.
+                Withdrawing stops future Meta events from this site and removes those first-party Meta cookies
+                where the browser permits it.
               </p>
             </section>
 
@@ -133,12 +158,17 @@ export default function PrivacyPage() {
                   <dt>Stripe</dt>
                   <dd>Processes checkout and payment information and provides the payment record used to authorise delivery.</dd>
                 </div>
+                <div>
+                  <dt>Meta</dt>
+                  <dd>Receives advertising-measurement events only when you allow them, for ad attribution and delivery optimization.</dd>
+                </div>
               </dl>
               <p>
                 These providers may process information outside the EU or EEA, including in the United States.
                 Where required, recognized transfer safeguards are used. Their own notices provide more detail:
                 {' '}<a href="https://vercel.com/legal/privacy-policy" rel="noreferrer" target="_blank">Vercel Privacy Notice</a>
-                {' '}and{' '}<a href="https://stripe.com/privacy" rel="noreferrer" target="_blank">Stripe Privacy Policy</a>.
+                {', '}<a href="https://stripe.com/privacy" rel="noreferrer" target="_blank">Stripe Privacy Policy</a>
+                {' '}and{' '}<a href="https://www.facebook.com/privacy/policy/" rel="noreferrer" target="_blank">Meta Privacy Policy</a>.
               </p>
             </section>
 
@@ -146,6 +176,8 @@ export default function PrivacyPage() {
               <h2>How long information is kept</h2>
               <ul>
                 <li>The protected-download cookie expires after seven days.</li>
+                <li>Purchase-recovery entries are checked against Stripe during the request and are not retained by this website afterward.</li>
+                <li>Your Meta measurement choice stays in this browser until you change it or clear site storage.</li>
                 <li>Our current Vercel analytics reporting window is twelve months.</li>
                 <li>Payment and transaction records are kept as long as required for accounting, tax, fraud prevention, support, and legal claims.</li>
                 <li>Vercel and Stripe retain information according to their agreements and privacy notices.</li>
