@@ -80,6 +80,48 @@
   isolation: isolate;
 }
 
+/* The supplied collection artwork stays uncropped, with its own natural shadows. */
+.collection-hero {
+  display: grid;
+  grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
+  align-items: center;
+  gap: clamp(24px, 3vw, 56px);
+  padding: 64px 3vw 64px 6vw;
+  background: var(--test-paper);
+}
+
+.collection-hero .background-copy {
+  grid-column: 1;
+  grid-row: 1;
+  width: auto;
+  min-height: auto;
+  padding: 0;
+}
+
+.collection-hero-art {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+  margin: 0;
+}
+
+.collection-hero-art > img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.collection-hero-art figcaption {
+  max-width: 42ch;
+  margin: 24px auto 0;
+  color: var(--test-forest);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 16px;
+  font-style: italic;
+  line-height: 1.5;
+  text-align: center;
+}
+
 .cover-background {
   position: absolute;
   z-index: -1;
@@ -1099,6 +1141,16 @@
     bottom: 1%;
     left: 29%;
   }
+
+  .background-hero.collection-hero {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+    padding: 72px 4vw 52px;
+    background: var(--test-paper);
+  }
+
+  .collection-hero .background-copy { grid-column: 1; grid-row: 1; padding: 0 5vw; }
+  .collection-hero-art { grid-column: 1; grid-row: 2; width: min(100%, 860px); margin: 0 auto; }
 }
 
 @media (max-width: 960px) {

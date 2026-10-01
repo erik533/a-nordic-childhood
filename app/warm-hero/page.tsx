@@ -164,34 +164,11 @@ export default function HeroBackgroundTest() {
         </div>
       </nav>
 
-      <section className="background-hero" aria-labelledby="background-title">
-        <div className="cover-background" role="img" aria-label="The five books in A Nordic Childhood: The Learning Collection">
-          <div className="cover-object workbook cover-first-numbers">
-            <span className="wire-binding" aria-hidden="true">{Array.from({ length: 10 }, (_, index) => <i key={index} />)}</span>
-            <Image src="/hero-cover-first-numbers.png" alt="" width={480} height={682} sizes="(max-width: 720px) 30vw, 220px" loading="eager" />
-          </div>
-          <div className="cover-object workbook cover-numbers-together">
-            <span className="wire-binding" aria-hidden="true">{Array.from({ length: 10 }, (_, index) => <i key={index} />)}</span>
-            <Image src="/hero-cover-numbers-together.png" alt="" width={480} height={682} sizes="(max-width: 720px) 30vw, 220px" loading="eager" />
-          </div>
-          <div className="cover-object hardback cover-heart">
-            <Image src="/cover-a-nordic-childhood.png" alt="" width={1275} height={1650} sizes="(max-width: 720px) 42vw, 330px" loading="eager" fetchPriority="high" />
-          </div>
-          <div className="cover-object workbook cover-first-letters">
-            <span className="wire-binding" aria-hidden="true">{Array.from({ length: 10 }, (_, index) => <i key={index} />)}</span>
-            <Image src="/hero-cover-first-letters.png" alt="" width={480} height={682} sizes="(max-width: 720px) 30vw, 220px" loading="eager" />
-          </div>
-          <div className="cover-object workbook cover-words-together">
-            <span className="wire-binding" aria-hidden="true">{Array.from({ length: 10 }, (_, index) => <i key={index} />)}</span>
-            <Image src="/hero-cover-words-together.png" alt="" width={480} height={682} sizes="(max-width: 720px) 30vw, 220px" loading="eager" />
-          </div>
-          <div className="pdf-seal" aria-hidden="true">
-            <span>PRINTABLE</span>
-            <strong>PDF</strong>
-            <span>COLLECTION</span>
-          </div>
-          <p className="background-caption">One heart. Two learning paths. Practice only when it helps.</p>
-        </div>
+      <section className="background-hero collection-hero" aria-labelledby="background-title">
+        <figure className="collection-hero-art">
+          <Image src="/collection-covers/collection.png" alt="A Nordic Childhood with First Letters, Words Together, Extra Letter Practice, First Numbers, Numbers Together and Extra Number Practice" width={1536} height={1024} sizes="(max-width: 1100px) 94vw, 52vw" quality={85} priority />
+          <figcaption>One heart. Two learning paths. Practice only when it helps.</figcaption>
+        </figure>
         <div className="background-copy">
           <p className="background-eyebrow">A NORDIC CHILDHOOD: THE LEARNING COLLECTION</p>
           <h1 id="background-title">One useful page is enough.</h1>
@@ -412,7 +389,7 @@ export default function HeroBackgroundTest() {
         <article className="warm-map-heart">
           <div className="warm-map-heart-cover">
             <PagePreview
-              src="/cover-a-nordic-childhood.png"
+              src="/collection-covers/a-nordic-childhood.png"
               alt="Cover of A Nordic Childhood"
               title="A Nordic Childhood"
               kind="cover"
@@ -433,8 +410,8 @@ export default function HeroBackgroundTest() {
               <h3>See it. Make it. Notice what changes.</h3>
             </header>
             <div className="warm-map-cover-pair" aria-label="The two number books">
-              <WorkbookCover src="/cover-first-numbers.png" alt="Cover of First Numbers" />
-              <WorkbookCover src="/cover-numbers-together.png" alt="Cover of Numbers Together" />
+              <WorkbookCover src="/collection-covers/first-numbers.png" alt="Cover of First Numbers" />
+              <WorkbookCover src="/collection-covers/numbers-together.png" alt="Cover of Numbers Together" />
             </div>
             <div className="warm-map-book-copy">
               <div>
@@ -454,8 +431,8 @@ export default function HeroBackgroundTest() {
               <h3>See it. Hear it. Then use it.</h3>
             </header>
             <div className="warm-map-cover-pair" aria-label="The letter and word books">
-              <WorkbookCover src="/cover-first-letters.png" alt="Cover of First Letters" />
-              <WorkbookCover src="/cover-words-together.png" alt="Cover of Words Together" />
+              <WorkbookCover src="/collection-covers/first-letters.png" alt="Cover of First Letters" />
+              <WorkbookCover src="/collection-covers/words-together.png" alt="Cover of Words Together" />
             </div>
             <div className="warm-map-book-copy">
               <div>
@@ -477,18 +454,8 @@ export default function HeroBackgroundTest() {
             <p>Add practice only when the child wants or needs it. Both books are included from the beginning, but they do not have to be used from the beginning.</p>
           </div>
           <div className="warm-map-bonus-books" aria-label="The two bonus practice books">
-            <div className="warm-map-bonus-book number-bonus">
-              <span>BONUS</span>
-              <small>A NORDIC CHILDHOOD</small>
-              <strong>Extra Number<br />Practice</strong>
-              <em>0 to 10</em>
-            </div>
-            <div className="warm-map-bonus-book letter-bonus">
-              <span>BONUS</span>
-              <small>A NORDIC CHILDHOOD</small>
-              <strong>Extra Letter<br />Practice</strong>
-              <em>A to Z</em>
-            </div>
+            <WorkbookCover src="/collection-covers/extra-number-practice.png" alt="Cover of Extra Number Practice" />
+            <WorkbookCover src="/collection-covers/extra-letter-practice.png" alt="Cover of Extra Letter Practice" />
           </div>
         </aside>
       </section>
@@ -686,9 +653,9 @@ export default function HeroBackgroundTest() {
 
           <aside className="warm-purchase">
             <div className="warm-purchase-covers" aria-hidden="true">
-              <Image src="/cover-first-numbers.png" alt="" width={1054} height={1492} sizes="(max-width: 720px) 28vw, 160px" />
-              <Image src="/cover-a-nordic-childhood.png" alt="" width={1275} height={1650} sizes="(max-width: 720px) 28vw, 160px" />
-              <Image src="/cover-first-letters.png" alt="" width={1054} height={1492} sizes="(max-width: 720px) 28vw, 160px" />
+              <Image src="/collection-covers/first-numbers.png" alt="" width={1024} height={1536} sizes="(max-width: 720px) 28vw, 160px" />
+              <Image src="/collection-covers/a-nordic-childhood.png" alt="" width={1103} height={1426} sizes="(max-width: 720px) 28vw, 160px" />
+              <Image src="/collection-covers/first-letters.png" alt="" width={1024} height={1536} sizes="(max-width: 720px) 28vw, 160px" />
             </div>
             <p className="warm-purchase-total"><strong>313</strong><span>pages across eight core PDFs</span></p>
             <ul>

@@ -13,6 +13,13 @@ type PagePreviewProps = {
 };
 
 const imageDimensions: Record<string, { height: number; width: number }> = {
+  '/collection-covers/a-nordic-childhood.png': { width: 1103, height: 1426 },
+  '/collection-covers/first-numbers.png': { width: 1024, height: 1536 },
+  '/collection-covers/numbers-together.png': { width: 1024, height: 1536 },
+  '/collection-covers/first-letters.png': { width: 1024, height: 1536 },
+  '/collection-covers/words-together.png': { width: 1024, height: 1536 },
+  '/collection-covers/extra-number-practice.png': { width: 1024, height: 1536 },
+  '/collection-covers/extra-letter-practice.png': { width: 1024, height: 1536 },
   '/cover-a-nordic-childhood.png': { width: 1275, height: 1650 },
   '/cover-first-letters.png': { width: 1054, height: 1492 },
   '/cover-first-numbers.png': { width: 1054, height: 1492 },
