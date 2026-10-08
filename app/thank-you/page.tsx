@@ -26,13 +26,12 @@ export default async function ThankYouPage({ searchParams }: { searchParams: Pro
           </>
         ) : (
           <>
-            <h1>We could not confirm the download yet.</h1>
-            <p>No second payment is needed. Please return to the Stripe confirmation page and use its link again, or email erik@erikastrand.com for help.</p>
+            <h1>Your files have moved.</h1>
+            <p>A Nordic Childhood now lives at ANordicChildhood.com. If you bought the books, I have emailed you new download links that work on any device. Cannot find the email? Write to erik@erikastrand.com and I will send your files again.</p>
           </>
         )}
         <nav className={styles.links} aria-label="Thank-you page links">
-          <Link href="/">Return to A Nordic Childhood</Link>
-          <Link href="/privacy">Privacy</Link>
+          <a href="https://anordicchildhood.com/">Go to ANordicChildhood.com</a>
           <Link href="/recover">Recover a purchase</Link>
         </nav>
       </section>
