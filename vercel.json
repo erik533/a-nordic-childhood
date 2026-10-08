@@ -1,4 +1,11 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "framework": "nextjs"
+  "framework": "nextjs",
+  "redirects": [
+    {
+      "source": "/((?!recover|thank-you|api/|_next/|favicon).*)",
+      "destination": "https://anordicchildhood.com/",
+      "permanent": false
+    }
+  ]
 }
